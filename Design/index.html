@@ -53,14 +53,19 @@
                 </div>
             </div>
         </section>
-        <section id="rules" class="sec-rules">
+        <section id="rules" class="sec-rules" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+            <p class="mainTitle" style="color: white; margin-bottom: 20px;"><strong>Rules</strong></p>
             <div class="tournament-container">
                 <div class="tournament-tabs">
-                    <button class="tournament-tab active" onclick="showTournamentTab('tournament-rules')">
-                        <span class="tournament-tab-icon">📋</span>
+                    <!-- replace with eventlistener -->
+                    <button class="tournament-tab active left-tab" onclick="showTournamentTab('tournament-rules')">
+                        <!-- add icon here-->
+                        <span class="tournament-tab-icon ">📋</span>
                         Rules & Guidelines
                     </button>
-                    <button class="tournament-tab" onclick="showTournamentTab('tournament-prizes')">
+                    <!-- replace with eventlistener -->
+                    <button class="tournament-tab right-tab" onclick="showTournamentTab('tournament-prizes')">
+                        <!-- add icon here-->
                         <span class="tournament-tab-icon">🏆</span>
                         Prizes & Rewards
                     </button>
@@ -71,48 +76,14 @@
                         <div class="tournament-rules-grid">
                             <div class="tournament-rule-card">
                                 <div class="tournament-rule-header">
+                                    <!-- add icon here -->
                                     <div class="tournament-rule-icon">🛡️</div>
                                     <h3 class="tournament-rule-title">Battle Format</h3>
                                 </div>
                                 <div class="tournament-rule-item">
+                                    <!-- Get rules from DB -->
                                     <div class="tournament-rule-bullet"></div>
-                                    <span>Single Elimination Format with double elimination in finals</span>
-                                </div>
-                                <div class="tournament-rule-item">
-                                    <div class="tournament-rule-bullet"></div>
-                                    <span>Best of 3 matches per round, Best of 5 for semifinals and finals</span>
-                                </div>
-                                <div class="tournament-rule-item">
-                                    <div class="tournament-rule-bullet"></div>
-                                    <span>Standard VGC 2024 regulation ruleset applies to all matches</span>
-                                </div>
-                                <div class="tournament-rule-item">
-                                    <div class="tournament-rule-bullet"></div>
-                                    <span>Team of 6 Pokemon, bring 4 to each individual battle</span>
-                                </div>
-                                <div class="tournament-rule-item">
-                                    <div class="tournament-rule-bullet"></div>
-                                    <span>Team sheets must be submitted 24 hours before tournament start</span>
-                                </div>
-                                <div class="tournament-rule-item">
-                                    <div class="tournament-rule-bullet"></div>
-                                    <span>All Pokemon must be obtained through legitimate means - no hacked Pokemon</span>
-                                </div>
-                                <div class="tournament-rule-item">
-                                    <div class="tournament-rule-bullet"></div>
-                                    <span>Items are allowed according to VGC 2024 restricted item list</span>
-                                </div>
-                                <div class="tournament-rule-item">
-                                    <div class="tournament-rule-bullet"></div>
-                                    <span>Duplicate Pokemon and items are not allowed on the same team</span>
-                                </div>
-                                <div class="tournament-rule-item">
-                                    <div class="tournament-rule-bullet"></div>
-                                    <span>Dynamax is allowed, Z-moves and Mega Evolution are banned</span>
-                                </div>
-                                <div class="tournament-rule-item">
-                                    <div class="tournament-rule-bullet"></div>
-                                    <span>Certain legendary and mythical Pokemon are restricted per VGC rules</span>
+                                    <span>Single Elimination Format with double elimination in finals. PLACEHOLDER</span>
                                 </div>
                             </div>
                         </div>
@@ -121,31 +92,34 @@
                     <div id="tournament-prizes" class="tournament-tab-content">
                         <div class="tournament-prizes-grid">
                             <div class="tournament-prize-card first">
+                                <!-- add icons here -->
                                 <div class="tournament-prize-icon">👑</div>
                                 <h3 class="tournament-prize-place">1st Place</h3>
-                                <div class="tournament-prize-package">Prize Package</div>
-                                <div class="tournament-prize-description">€500 + Champion Trophy + Exclusive Merchandise</div>
+                                <div class="tournament-prize-package">Prize:</div>
+                                <div class="tournament-prize-description"> 5 event keys + shiny swapper</div>
                             </div>
                             
                             <div class="tournament-prize-card second">
+                                <!-- add icons here -->
                                 <div class="tournament-prize-icon">🥈</div>
                                 <h3 class="tournament-prize-place">2nd Place</h3>
-                                <div class="tournament-prize-package">Prize Package</div>
-                                <div class="tournament-prize-description">€300 + Runner-up Trophy + Merchandise</div>
+                                <div class="tournament-prize-package">Prize:</div>
+                                <div class="tournament-prize-description">3 event keys</div>
                             </div>
                             
                             <div class="tournament-prize-card third">
+                                <!-- add icons here -->
                                 <div class="tournament-prize-icon">🥉</div>
                                 <h3 class="tournament-prize-place">3rd Place</h3>
-                                <div class="tournament-prize-package">Prize Package</div>
-                                <div class="tournament-prize-description">€150 + Bronze Trophy + Merchandise</div>
+                                <div class="tournament-prize-package">Prize:</div>
+                                <div class="tournament-prize-description">2 event keys</div>
                             </div>
                         </div>
                         
                         <div class="tournament-total-prize">
-                            <h3>Total Prize Pool</h3>
-                            <div class="tournament-total-amount">€1,100</div>
-                            <div class="tournament-total-subtitle">Plus exclusive merchandise and trophies for all winners</div>
+                            <h3>Reward for participants</h3>
+                            <div class="tournament-total-amount">1 event key</div>
+                            <div class="tournament-total-subtitle"></div>
                         </div>
                     </div>
                 </div>

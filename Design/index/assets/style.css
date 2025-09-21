@@ -12,6 +12,7 @@ header {
     -webkit-backdrop-filter: blur(8px);
     position: sticky;
     top: 0;
+    z-index: 10000;
 }
 
 a {
@@ -26,9 +27,9 @@ img {
 
 body {
     background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
-    min-height: 200vh;
+    min-height: 230vh;
     position: relative;
-    height: 200vh;
+    height: 230vh;
     z-index: -2;
 }
 
@@ -108,33 +109,46 @@ footer {
         opacity: 0;
     }
 }
+.sec-info {
+    margin-top: -3rem;
+    margin-bottom: 8rem;
+}
 
-
-
-
+.sec-rules {
+    margin-top: 20rem;
+    margin-bottom: 8rem;
+}
+section {
+    scroll-margin-top: 10vh; 
+}
+/* FIX  THE HEIGHT */
 .tournament-container {
-    max-width: 1200px;
+    width: 40%;
     margin: 0 auto;
-    background: rgba(20, 25, 35, 0.9);
     border-radius: 20px;
-    overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    background-color: rgba(30, 30, 50, 0.209);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
 }
 
 .tournament-tabs {
     display: flex;
-    background: rgba(15, 20, 30, 0.8);
+    background-color: rgba(30, 30, 50, 0.209);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px 16px 0px 0px;
 }
 
 .tournament-tab {
     flex: 1;
-    padding: 20px;
+    padding: 1.3rem;
     text-align: center;
     background: transparent;
     border: none;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 16px;
+    color: gray;
+    font-size: 20px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -143,18 +157,25 @@ footer {
     justify-content: center;
     gap: 10px;
 }
+.left-tab{
+    border-radius: 16px 0px 0px 0px;
 
+}
+.right-tab{
+    border-radius: 0px 16px 0px 0px;
+
+}
 .tournament-tab:hover {
     background: rgba(255, 255, 255, 0.05);
     color: white;
 }
 
 .tournament-tab.active {
-    color: #4FC3F7;
-    background: rgba(79, 195, 247, 0.1);
-    border-bottom: 2px solid #4FC3F7;
+    color: white;
+    background: rgba(208, 207, 216, 0.15);
+    border-bottom: 2px solid white;
 }
-
+/* replace this with img */
 .tournament-tab-icon {
     width: 20px;
     height: 20px;
@@ -162,7 +183,7 @@ footer {
 }
 
 .tournament-content {
-    padding: 40px;
+    padding: 1.5rem;
 }
 
 .tournament-tab-content {
@@ -183,29 +204,21 @@ footer {
 .tournament-rules-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 30px;
-    max-width: 500px;
+    min-width: 500px;
     margin: 0 auto;
 }
 
 .tournament-rule-card {
-    background: linear-gradient(135deg, rgba(79, 195, 247, 0.1) 0%, rgba(30, 40, 60, 0.3) 100%);
-    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(53, 64, 84, 0.3) 0%, rgba(45, 49, 85, 0.5) 100%);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: #4283c450 2px solid;
+    border-radius: 0.5rem;
     padding: 30px;
-    border: 1px solid rgba(79, 195, 247, 0.2);
     position: relative;
     overflow: hidden;
 }
 
-.tournament-rule-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #FFD700, #4FC3F7);
-}
+
 
 .tournament-rule-header {
     display: flex;
@@ -213,11 +226,10 @@ footer {
     gap: 15px;
     margin-bottom: 25px;
 }
-
+/* replace with real icon later */
 .tournament-rule-icon {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, #FFD700, #FFA000);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -228,7 +240,7 @@ footer {
 .tournament-rule-title {
     font-size: 24px;
     font-weight: 700;
-    color: #4FC3F7;
+    color: #4283c4;
 }
 
 .tournament-rule-item {
@@ -236,18 +248,17 @@ footer {
     align-items: flex-start;
     gap: 12px;
     margin-bottom: 15px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.9);
 }
 
 .tournament-rule-bullet {
-    width: 6px;
-    height: 6px;
-    background: #4FC3F7;
+    width: 7px;
+    height: 7px;
+    background: #4283c4;
     border-radius: 50%;
     margin-top: 8px;
-    flex-shrink: 0;
 }
 
 /* Tournament Prizes Section */
@@ -259,7 +270,7 @@ footer {
 }
 
 .tournament-prize-card {
-    background: linear-gradient(135deg, rgba(30, 40, 60, 0.4) 0%, rgba(15, 20, 30, 0.6) 100%);
+    background: linear-gradient(135deg, rgba(20, 45, 56, 0.3) 0%, rgba(8, 16, 90, 0.5) 100%);
     border-radius: 20px;
     padding: 35px 25px;
     text-align: center;
@@ -304,7 +315,7 @@ footer {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
-
+/* replace with real icon later */
 .tournament-prize-icon {
     width: 60px;
     height: 60px;
@@ -315,7 +326,7 @@ footer {
     border-radius: 50%;
     font-size: 30px;
 }
-
+/* if icon looks bad with ts remove */
 .first .tournament-prize-icon {
     background: linear-gradient(135deg, #FFD700, #FFA000);
 }
@@ -332,25 +343,22 @@ footer {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 15px;
-    color: #4FC3F7;
+    color: #4283C4;
 }
 
 .tournament-prize-package {
-    background: #FFD700;
-    color: #000;
+    color: #ffffff;
     padding: 8px 16px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
-    margin-bottom: 15px;
     display: inline-block;
 }
 
 .tournament-prize-description {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     color: white;
-    line-height: 1.4;
 }
 
 .tournament-total-prize {
@@ -360,27 +368,22 @@ footer {
     text-align: center;
     border: 2px solid #4FC3F7;
     margin-top: 30px;
+    transition: 0.3s ease;
 }
 
 .tournament-total-prize h3 {
-    font-size: 24px;
-    color: #4FC3F7;
+    font-size: 38px;
+    color: #4283C4;
     margin-bottom: 15px;
     font-weight: 700;
 }
-
-.tournament-total-amount {
-    font-size: 48px;
-    font-weight: 800;
-    background: linear-gradient(135deg, #FFD700, #4FC3F7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 10px;
+.tournament-total-prize:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
-
-.tournament-total-subtitle {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 16px;
+.tournament-total-amount {
+    font-size: 40px;
+    font-weight: 600;
+    color: white;
 }
 
