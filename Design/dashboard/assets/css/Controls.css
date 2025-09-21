@@ -1,0 +1,84 @@
+.control-section {
+    margin-bottom: 30px;
+}
+
+.control-card {
+    background: var(--secondary-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.control-card:hover {
+    transform: translateY(-2px);
+}
+
+.control-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.start {
+    background: #169546;
+}
+.end {
+    background: #C82425;
+}
+.matches {
+    background: #235BD7;
+}
+.reset {
+    background: #8730D6;
+
+}
+.finish {
+    background: #0E877E;
+}
+.soon {
+    background: #464F5C;
+}
+.start, .end, .matches, .reset, .finish, .soon{
+    border: none;
+    height: 8rem;
+    width: 10rem;
+    border-radius: 12px;
+    padding: 24px;
+    color: var(--text-light);
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+}
+.control-btn:hover {
+    transform: translateY(-4px);
+    scale: 1.1;
+}
+.control-btn:active{
+    scale: 0.95;
+}
+
+.control-icon {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.control-text {
+    font-size: 20px;
+    line-height: 1.2;
+}
+.control-logo{
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1); 
+}
+.preset-img{
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}

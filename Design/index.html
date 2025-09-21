@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokeland Tourneys</title>
+    <link rel="stylesheet" href="index/assets/main.css?v=242">
+    <link rel="stylesheet" href="index/assets/nav.css?v=2">
+    <link rel="stylesheet" href="index/assets/style.css?v=24">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <header>
+        <div class="header">
+            <div class="title">
+                <a href=""><img src="index/icons/Logo.png" alt="logo" class="logo"></a>
+                <div class="group">
+                    <a href="#" class="title-pokeland title">Pokeland</a>
+                    <a href="#" class="title-pokeland hub">Tournament Hub</a>
+                </div>
+            </div>
+            <div class="nav">
+                <a href="#info" class="tournament">Tournament</a>
+                <a href="#" class="brackets">Brackets</a>
+                <a href="#rules" class="rules">Rules</a>
+            </div>
+            <button class="button" onclick="window.location.href='dashboard.html'">Admin Login</button>        </div>
+    </header>
+    <main>
+        <section id="info" class="sec-info">
+            <div class="container">
+                <p class="mainTitle"><strong>Pokeland Tournaments</strong></p>
+                <p class="slug">Join the ultimate Pokemon competitive scene. Battle, compete,<br> and become the champion!</p>
+                <div class="card">
+                    <div class="currentTournament">
+                        <img src="index/icons/TrophyYellow.png" alt="" class="trophyYellow">
+                        <p class="current">Current Tournament</p>
+                    </div>
+                    <p class="currentTitle">Singles unlimited</p>
+                    <div class="dateContainer">
+                        <p class="date"><img src="index/icons/Date.png" alt="" class="img">Dec 19</p>
+                        <p class="players"><img src="index/icons/Bolt.png" alt="" class="img">32 Players</p>
+                    </div>
+                </div>
+                <div class="buttonContainer">
+                    <button class="viewBrackets">View Brackets</button>
+                    <button class="viewRules">Tournament Rules</button>
+                </div>
+            </div>
+        </section>
+        <section id="rules" class="sec-rules">
+            <div class="tournament-container">
+                <div class="tournament-tabs">
+                    <button class="tournament-tab active" onclick="showTournamentTab('tournament-rules')">
+                        <span class="tournament-tab-icon">📋</span>
+                        Rules & Guidelines
+                    </button>
+                    <button class="tournament-tab" onclick="showTournamentTab('tournament-prizes')">
+                        <span class="tournament-tab-icon">🏆</span>
+                        Prizes & Rewards
+                    </button>
+                </div>
+                
+                <div class="tournament-content">
+                    <div id="tournament-rules" class="tournament-tab-content active">
+                        <div class="tournament-rules-grid">
+                            <div class="tournament-rule-card">
+                                <div class="tournament-rule-header">
+                                    <div class="tournament-rule-icon">🛡️</div>
+                                    <h3 class="tournament-rule-title">Battle Format</h3>
+                                </div>
+                                <div class="tournament-rule-item">
+                                    <div class="tournament-rule-bullet"></div>
+                                    <span>Single Elimination Format with double elimination in finals</span>
+                                </div>
+                                <div class="tournament-rule-item">
+                                    <div class="tournament-rule-bullet"></div>
+                                    <span>Best of 3 matches per round, Best of 5 for semifinals and finals</span>
+                                </div>
+                                <div class="tournament-rule-item">
+                                    <div class="tournament-rule-bullet"></div>
+                                    <span>Standard VGC 2024 regulation ruleset applies to all matches</span>
+                                </div>
+                                <div class="tournament-rule-item">
+                                    <div class="tournament-rule-bullet"></div>
+                                    <span>Team of 6 Pokemon, bring 4 to each individual battle</span>
+                                </div>
+                                <div class="tournament-rule-item">
+                                    <div class="tournament-rule-bullet"></div>
+                                    <span>Team sheets must be submitted 24 hours before tournament start</span>
+                                </div>
+                                <div class="tournament-rule-item">
+                                    <div class="tournament-rule-bullet"></div>
+                                    <span>All Pokemon must be obtained through legitimate means - no hacked Pokemon</span>
+                                </div>
+                                <div class="tournament-rule-item">
+                                    <div class="tournament-rule-bullet"></div>
+                                    <span>Items are allowed according to VGC 2024 restricted item list</span>
+                                </div>
+                                <div class="tournament-rule-item">
+                                    <div class="tournament-rule-bullet"></div>
+                                    <span>Duplicate Pokemon and items are not allowed on the same team</span>
+                                </div>
+                                <div class="tournament-rule-item">
+                                    <div class="tournament-rule-bullet"></div>
+                                    <span>Dynamax is allowed, Z-moves and Mega Evolution are banned</span>
+                                </div>
+                                <div class="tournament-rule-item">
+                                    <div class="tournament-rule-bullet"></div>
+                                    <span>Certain legendary and mythical Pokemon are restricted per VGC rules</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="tournament-prizes" class="tournament-tab-content">
+                        <div class="tournament-prizes-grid">
+                            <div class="tournament-prize-card first">
+                                <div class="tournament-prize-icon">👑</div>
+                                <h3 class="tournament-prize-place">1st Place</h3>
+                                <div class="tournament-prize-package">Prize Package</div>
+                                <div class="tournament-prize-description">€500 + Champion Trophy + Exclusive Merchandise</div>
+                            </div>
+                            
+                            <div class="tournament-prize-card second">
+                                <div class="tournament-prize-icon">🥈</div>
+                                <h3 class="tournament-prize-place">2nd Place</h3>
+                                <div class="tournament-prize-package">Prize Package</div>
+                                <div class="tournament-prize-description">€300 + Runner-up Trophy + Merchandise</div>
+                            </div>
+                            
+                            <div class="tournament-prize-card third">
+                                <div class="tournament-prize-icon">🥉</div>
+                                <h3 class="tournament-prize-place">3rd Place</h3>
+                                <div class="tournament-prize-package">Prize Package</div>
+                                <div class="tournament-prize-description">€150 + Bronze Trophy + Merchandise</div>
+                            </div>
+                        </div>
+                        
+                        <div class="tournament-total-prize">
+                            <h3>Total Prize Pool</h3>
+                            <div class="tournament-total-amount">€1,100</div>
+                            <div class="tournament-total-subtitle">Plus exclusive merchandise and trophies for all winners</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+            function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        createParticles();
+        function showTournamentTab(tabName) {
+    // Hide all tab contents
+    const tabContents = document.querySelectorAll('.tournament-tab-content');
+    tabContents.forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    // Remove active class from all tabs
+    const tabs = document.querySelectorAll('.tournament-tab');
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // Show selected tab content
+    document.getElementById(tabName).classList.add('active');
+    
+    // Add active class to clicked tab
+    event.target.classList.add('active');
+}
+    </script>
+</body>
+</html>
