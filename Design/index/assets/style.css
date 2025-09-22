@@ -7,12 +7,13 @@
 
 header {
     height: 10vh;
-    background-color: rgba(23, 23, 46, 0);
+    background-color: rgba(23, 23, 46, 0.1);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     position: sticky;
     top: 0;
     z-index: 10000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 a {
@@ -27,9 +28,8 @@ img {
 
 body {
     background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
-    min-height: 230vh;
     position: relative;
-    height: 230vh;
+    max-height: 220vh;
     z-index: -2;
 }
 
@@ -67,13 +67,8 @@ body {
 }
 
 main {
-    height: 150vh;
+    height: 190vh;
 }
-
-footer {
-    height: 10vh;
-}
-
 .particles {
     position: fixed;
     top: 0;
@@ -111,12 +106,13 @@ footer {
 }
 .sec-info {
     margin-top: -3rem;
-    margin-bottom: 8rem;
+    margin-bottom: 10rem;
+    height: 80vh;
 }
 
 .sec-rules {
-    margin-top: 20rem;
-    margin-bottom: 8rem;
+    height: 80vh;
+
 }
 section {
     scroll-margin-top: 10vh; 
@@ -386,4 +382,146 @@ section {
     font-weight: 600;
     color: white;
 }
+/* footer */
+/* Update your existing footer styles - REPLACE the existing footer rule */
+footer {
+    background-color: rgba(23, 23, 46, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    position: relative;
+    width: 100%;
+}
+
+/* ADD THESE NEW FOOTER STYLES */
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.footer-logo {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #4283c4 0%, #6366f1 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    flex-shrink: 0;
+}
+
+.footer-brand-text {
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+.footer-brand-text:hover .footer-brand-subtitle {
+    color: white;
+}
+.footer-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    transition: 0.5s ease-in-out;
+}
+.footer-brand:hover .footer-brand-subtitle {
+    color: white;
+}
+.footer-brand-name {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+.footer-brand-subtitle {
+    color: #80848e;
+    font-size: 12px;
+    line-height: 1.2;
+    transition: 0.5s ease-in-out;
+
+}
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.footer-social .social-link {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #80848e;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 100px;
+    filter: brightness(0) invert(0.6);    
+}
+.footer-social .social-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.footer-social .social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.3s ease;
+    z-index: 1;
+}
+
+.footer-social .social-link:hover::before {
+    left: 100%;
+}
+
+.footer-social .social-link:hover {
+    background-color: rgba(43, 45, 49, 0.247);
+    filter: brightness(0) invert(1);
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.footer-links a {
+    color: #80848e;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+    font-size: 20px;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
 
