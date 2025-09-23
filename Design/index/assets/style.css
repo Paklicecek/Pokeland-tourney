@@ -27,10 +27,11 @@ img {
 }
 
 body {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
     position: relative;
     max-height: 220vh;
-    z-index: -2;
+    z-index: -2; 
+    width: 100%;
+    background-color: rgb(9, 6, 31);
 }
 
 .img {
@@ -68,6 +69,7 @@ body {
 
 main {
     height: 190vh;
+    width: 100%;
 }
 .particles {
     position: fixed;
@@ -85,7 +87,7 @@ main {
     background: rgba(99,102,241, 0.6);
     border-radius: 50%;
     animation: floatUp 6s infinite linear;
-    z-index: -1;
+    z-index: 0;
 }
 
 @keyframes floatUp {
@@ -105,15 +107,63 @@ main {
     }
 }
 .sec-info {
-    margin-top: -3rem;
     margin-bottom: 10rem;
-    height: 80vh;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.sec-info {
+  margin-bottom: 10rem;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: visible;  
+  z-index: 10;        
 }
 
+.sec-info::before {
+  content: "";
+  position: absolute;  
+  inset: 0;
+  top: -10vh;
+  background-image: url('../gif/Girattina.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;            
+  transition: transform .5s ease, filter .4s ease;
+  filter: brightness(0.15);     
+  transform-origin: center;
+}
+
+.sec-info::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -9.84vh;
+  height: 30vh;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    rgba(9, 6, 31, 1)  0%,
+    rgb(9, 6, 31, 1) 35%,
+    rgba(9, 6, 31, 0.3) 85%,
+    rgba(9, 6, 31, 0.1)  100%
+  );
+  transition: opacity .35s ease;
+  opacity: 1;
+}
+
+/* ensure the following section sits visually under the overlay */
 .sec-rules {
-    height: 80vh;
-
+  height: 80vh;
+  position: relative;
+  z-index: 5;
 }
+
+
 section {
     scroll-margin-top: 10vh; 
 }
