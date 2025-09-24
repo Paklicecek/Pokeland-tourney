@@ -49,10 +49,8 @@ body {
         opacity: 0;
     }
 }
-
-/* Login container */
 .login-container {
-    background: rgba(30, 41, 59, 0.95);
+    background: rgb(32 27 64 / 61%);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(148, 163, 184, 0.2);
     border-radius: 20px;
@@ -132,7 +130,7 @@ label {
 input[type="text"],
 input[type="password"] {
     width: 100%;
-    background-color: rgb(9, 6, 31);
+    background-color: rgb(10, 6, 36);
     border: 1px solid rgba(148, 163, 184, 0.3);
     border-radius: 12px;
     padding: 14px 16px;

@@ -1,3 +1,49 @@
+<?php
+session_start();
+
+$config = include __DIR__ . '../../../../config/db_credentials.php';
+
+$servername = $config['host'];
+$dbname = $config['db'];
+$username = $config['user'];
+$password = $config['pass'];
+
+$success_message = '';
+$error_message = '';
+
+$titles = [];
+
+if(!isset($_SESSION['permission']) || $_SESSION['permission'] !== true)
+{
+    header('Location: login.php');
+    exit;
+}
+
+$current_tournament = isset($_SESSION['current_tournament']) ? $_SESSION['current_tournament'] : 'Default Tournament';
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        $error_message = "Connection failed: " . $conn->connect_error;
+    }
+    else{
+        $res = $conn->query("SELECT title FROM presets ORDER BY title");
+        if ($res) {
+            while ($row = $res->fetch_assoc()) {
+                $titles[] = $row['title'];
+            }
+            $res->free();
+        }
+    }
+    $conn->close();
+
+
+
+$tournament_options = array();
+if (!empty($titles)) {
+    $tournament_options = array_combine($titles, $titles);
+} else {
+    $tournament_options = array('Default Tournament' => 'Default Tournament');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +58,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <aside class="sidebar">
         <div class="logo">
@@ -93,7 +140,7 @@
                 </div>
             </div>
         </div>
-
+<form method="POST" action="settings.php">
         <div class="preset-section">
             <div class="preset-grid">
                 <!-- Tournament Preset Selector -->
@@ -101,25 +148,24 @@
                     <h2 class="card-title">Tournament Preset</h2>
                     <div class="preset-controls">
                         <div class="custom-select">
-                            <div class="select-btn" id="presetSelector">
-                                <span id="selectedPreset">Single Elimination - 16 Players</span>
-                                <span class="dropdown-arrow">▼</span>
-                            </div>
-                            <div class="dropdown-menu" id="presetDropdown">
-                                <div class="dropdown-option selected" data-value="single-16">
-                                    <span>Singles unlimited - no legend/beast/paradox</span>
-                                </div>
-                                <div class="dropdown-option" data-value="single-32">
-                                    <span>Singles unlimited - 1 legend + 1 beast/paradox</span>
-                                </div>
+                            <div class="form-group">
+                                <select name="selected_tournament" id="tournament_select" class="tournament-selector" required>
+                                <option value="">-- Select Tournament --</option>
+                                <?php foreach ($tournament_options as $value => $display_name): ?>
+                                <option value="<?php echo htmlspecialchars($value); ?>" 
+                                        <?php echo ($current_tournament === $display_name) ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($display_name); ?>
+                                </option>
+                                <?php endforeach; ?>
+                                </select>
                             </div>
                         </div>
-                        <button class="preset-confirm-btn" id="presetConfirmBtn">
+                        <button class="preset-confirm-btn" id="presetConfirmBtn" type="submit">
                             <img src="../assets/icons/check.png" alt="" class="preset-img"> Apply Preset
                         </button>
                     </div>
                 </div>
-
+            </form>
                 <!-- Player Selector -->
                 <div class="preset-card">
                     <h2 class="card-title">Player Selection</h2>

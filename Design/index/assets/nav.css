@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
-    background-color: rgba(59, 73, 93, 0.2);
+    background-color: rgba(10, 7, 32, 0.2);
     z-index: 10000;
 }
 .title,.nav{

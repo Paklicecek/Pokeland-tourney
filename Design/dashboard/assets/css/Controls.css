@@ -41,7 +41,7 @@
 .start, .end, .matches, .reset, .finish, .soon{
     border: none;
     height: 8rem;
-    width: 10rem;
+    width: 13%;
     border-radius: 12px;
     padding: 24px;
     color: var(--text-light);
