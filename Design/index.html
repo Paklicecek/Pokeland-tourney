@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokeland Tourneys</title>
-    <link rel="stylesheet" href="index/assets/main.css?v=242">
-    <link rel="stylesheet" href="index/assets/nav.css?v=2">
-    <link rel="stylesheet" href="index/assets/style.css?v=24">
+    <link rel="stylesheet" href="./index/assets/main.css?v=242">
+    <link rel="stylesheet" href="./index/assets/nav.css?v=2">
+    <link rel="stylesheet" href="./index/assets/style.css?v=24">
+    <link rel="stylesheet" href="./index/assets/tournament.css?v=25">
+    <link rel="stylesheet" href="./index/assets/footer.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +20,10 @@
     <header>
         <div class="header">
             <div class="title">
-                <a href=""><img src="index/icons/Logo.png" alt="logo" class="logo"></a>
+                <a href=""><img src="./index/icons/Logo.png" alt="logo" class="logo"></a>
                 <div class="group">
-                    <a href="#" class="title-pokeland title">Pokeland</a>
-                    <a href="#" class="title-pokeland hub">Tournament Hub</a>
+                    <a href="#info" class="title-pokeland title">Pokeland</a>
+                    <a href="#info" class="title-pokeland hub">Tournament Hub</a>
                 </div>
             </div>
             <div class="nav">
@@ -29,7 +31,8 @@
                 <a href="#" class="brackets">Brackets</a>
                 <a href="#rules" class="rules">Rules</a>
             </div>
-            <button class="button" onclick="window.location.href='dashboard.html'">Admin Login</button>        </div>
+            <a class="button" href="./login/php/login.php">Admin Login</a>        
+        </div>
     </header>
     <main>
         <section id="info" class="sec-info">
@@ -43,8 +46,8 @@
                     </div>
                     <p class="currentTitle">Singles unlimited</p>
                     <div class="dateContainer">
-                        <p class="date"><img src="index/icons/Date.png" alt="" class="img">Dec 19</p>
-                        <p class="players"><img src="index/icons/Bolt.png" alt="" class="img">32 Players</p>
+                        <p class="date"><img src="./index/icons/Date.png" alt="" class="img">Dec 19</p>
+                        <p class="players"><img src="./index/icons/Bolt.png" alt="" class="img">32 Players</p>
                     </div>
                 </div>
                 <div class="buttonContainer">
@@ -130,7 +133,7 @@
     <div class="footer-content">
         <!-- Left Section: Brand -->
         <div class="footer-brand">
-           <a href="https://pokeland.cz/" class="footer-icon"><img src="index/icons/Logo.png" alt="Pokeland Logo" style="width: 60px; height: 60px;"></a>
+           <a href="https://pokeland.cz/" class="footer-icon"><img src="./index/icons/Logo.png" alt="Pokeland Logo" style="width: 60px; height: 60px;"></a>
             <div class="footer-brand-text">
                 <a class="footer-brand-name" href="https://pokeland.cz/">Pokeland.cz</a>
                 <a href="https://pokeland.cz/" class="footer-brand-subtitle">Pokemon Server</a>
@@ -138,16 +141,16 @@
         </div>
 
         <div class="footer-social">
-            <a href="https://discord.gg/Ma3r3yFB4J" class="social-link icon-discord"><img src="index/icons/Discord.png" alt="Discord"></a>
-            <a href="https://www.youtube.com/@PokelandCZ" class="social-link icon-youtube" ><img src="index/icons/Youtube.png" alt="Youtube"></a>
-            <a href="https://www.twitch.tv/captainvaniron" class="social-link icon-twitch" ><img src="index/icons/Twitch.png" alt="Twitch"></a>
-            <a href="https://www.instagram.com/pokeland.cz/" class="social-link icon-instagram" ><img src="index/icons/Instagram.png" alt="Instagram"></a>
-            <a href="https://github.com/Paklicecek" class="social-link icon-github" ><img src="index/icons/Github.png" alt="Github"></a>
+            <a href="https://discord.gg/Ma3r3yFB4J" class="social-link icon-discord"><img src="./index/icons/Discord.png" alt="Discord"></a>
+            <a href="https://www.youtube.com/@PokelandCZ" class="social-link icon-youtube" ><img src="./index/icons/Youtube.png" alt="Youtube"></a>
+            <a href="https://www.twitch.tv/captainvaniron" class="social-link icon-twitch" ><img src="./index/icons/Twitch.png" alt="Twitch"></a>
+            <a href="https://www.instagram.com/pokeland.cz/" class="social-link icon-instagram" ><img src="./index/icons/Instagram.png" alt="Instagram"></a>
+            <a href="https://github.com/Paklicecek" class="social-link icon-github" ><img src="./index/icons/Github.png" alt="Github"></a>
         </div>
 
         <div class="footer-links">
             <a href="#rules">Rules</a>
-            <a href="#store">Store</a>
+            <a href="https://store.rajce.pro/categories/Pokeland/klice">Store</a>
         </div>
     </div>
 </footer>
