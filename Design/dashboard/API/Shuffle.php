@@ -4,7 +4,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     echo "PHP script executed successfully!";
 
     $username = 'Paklicek';
-    $apiKey   = 'MdyRyn07cUcui1creZrt1MWt15eLynHJHLJ0hcRK';
+    $API = include __DIR__ . '../../../../config/api.php';
+    $apiKey = $API['apiKey']
     $tournamentIdentifier = 'myTest92521';  
     
     $url = "https://api.challonge.com/v1/tournaments/{$tournamentIdentifier}/participants/randomize.json";

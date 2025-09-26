@@ -1,0 +1,38 @@
+document.getElementById('start').addEventListener('click', function() {
+    fetchAndUpdate('../API/Start.php', { action: 'start' });
+});
+
+document.getElementById('end').addEventListener('click', function() {
+    fetchAndUpdate('../API/End.php', { action: 'end' });
+});
+
+document.getElementById('matches').addEventListener('click', function() {
+    fetchAndUpdate('../API/Generate.php', { action: 'matches' });
+});
+
+document.getElementById('reset').addEventListener('click', function() {
+    fetchAndUpdate('../API/Reset.php', { action: 'reset' });
+});
+
+document.getElementById('remove').addEventListener('click', function() {
+    fetchAndUpdate('../API/Remove.php', { action: 'remove' });
+});
+
+document.getElementById('shuffle').addEventListener('click', function() {
+    fetchAndUpdate('../API/Shuffle.php', { action: 'shuffle' });
+});
+async function fetchAndUpdate(url, data) {
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(data)
+        });
+        const result = await response.text();
+        document.getElementById('result').innerHTML = result;
+        location.reload()
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('result').innerHTML = 'An error occurred.';
+    }
+}

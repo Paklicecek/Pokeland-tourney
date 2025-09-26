@@ -1,10 +1,11 @@
 <?php
 session_start();
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'finish') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'end') {
     echo "PHP script executed successfully!";
 
+    $API = include __DIR__ . '../../../../config/api.php';
+    $apiKey = $API['apiKey']
     $username = 'Paklicek';
-    $apiKey   = 'MdyRyn07cUcui1creZrt1MWt15eLynHJHLJ0hcRK';
     $tournamentIdentifier = 'myTest92521';  
     
     $url = "https://api.challonge.com/v1/tournaments/{$tournamentIdentifier}/finalize.json";
