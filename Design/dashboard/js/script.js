@@ -21,6 +21,5 @@ document.querySelectorAll('.control-btn').forEach(btn => {
         setTimeout(() => {
             btn.style.transform = '';
         }, 150);
-        
     });
 });

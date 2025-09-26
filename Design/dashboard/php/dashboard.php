@@ -142,9 +142,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_tournament'
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Sidebar with Semantic HTML</title>
     <link rel="stylesheet" href="../assets/css/dashboard.css">
-    <script src="../js/script.js" defer></script>
+    <script src="../js/script.js?v=3" defer></script>
     <link rel="stylesheet" href="../assets/css/Controls.css">
-    <script src="../js/phpfunctions.js?v=2" defer></script>
+    <script src="../js/phpfunctions.js?v=4" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -286,6 +286,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_tournament'
         <div class="control-section">
             <div class="control-card">
                 <h2 class="card-title control-title">Tournament Control</h2>
+                <div id="result"></div>
                 <div class="control-grid">
                     <button class="control-btn start">
                         <div class="control-icon"><img src="../assets/icons/start.png" alt="" class="control-logo"></div>

@@ -29,10 +29,20 @@ async function fetchAndUpdate(url, data) {
             body: new URLSearchParams(data)
         });
         const result = await response.text();
-        document.getElementById('result').innerHTML = result;
-        location.reload()
+        
+        const resultElement = document.getElementById('result');
+        if (resultElement) {
+            resultElement.innerHTML = result;
+        } else {
+            console.log('Result:', result); 
+        }
+        
+        
     } catch (error) {
         console.error('Error:', error);
-        document.getElementById('result').innerHTML = 'An error occurred.';
+        const resultElement = document.getElementById('result');
+        if (resultElement) {
+            resultElement.innerHTML = 'An error occurred.';
+        }
     }
 }

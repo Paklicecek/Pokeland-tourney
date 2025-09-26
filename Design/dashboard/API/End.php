@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     echo "PHP script executed successfully!";
 
     $API = include __DIR__ . '../../../../config/api.php';
-    $apiKey = $API['apiKey']
+    $apiKey = $API['apiKey'];
     $username = 'Paklicek';
     $tournamentIdentifier = 'myTest92521';  
     
