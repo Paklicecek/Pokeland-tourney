@@ -2,7 +2,7 @@
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'preset') {
     echo "PHP script executed successfully!";
-
+    
     $username = 'Paklicek';
     $API = include __DIR__ . '../../../../config/api.php';
     $apiKey = $API['apiKey'];
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     ];
         // 'tournament[url]' => 'updated-tournament-url', přidat později s počítadlem na číslo turnaje
         // 'tournament[start_at]' => '2024-12-31T12:00:00Z', přidat později s automatickým ukazováním času
-        
+
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

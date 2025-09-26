@@ -144,9 +144,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_tournament'
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Sidebar with Semantic HTML</title>
     <link rel="stylesheet" href="../assets/css/dashboard.css">
-    <script src="../js/script.js?v=3" defer></script>
+    <script src="../js/script.js?v=4" defer></script>
     <link rel="stylesheet" href="../assets/css/Controls.css">
-    <script src="../js/phpfunctions.js?v=4" defer></script>
+    <script src="../js/phpfunctions.js?v=5" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
