@@ -1,24 +1,24 @@
-document.getElementById('start').addEventListener('click', function() {
+document.querySelector('.start').addEventListener('click', function() {
     fetchAndUpdate('../API/Start.php', { action: 'start' });
 });
 
-document.getElementById('end').addEventListener('click', function() {
+document.querySelector('.end').addEventListener('click', function() {
     fetchAndUpdate('../API/End.php', { action: 'end' });
 });
 
-document.getElementById('matches').addEventListener('click', function() {
+document.querySelector('.matches').addEventListener('click', function() {
     fetchAndUpdate('../API/Generate.php', { action: 'matches' });
 });
 
-document.getElementById('reset').addEventListener('click', function() {
+document.querySelector('.reset').addEventListener('click', function() {
     fetchAndUpdate('../API/Reset.php', { action: 'reset' });
 });
 
-document.getElementById('remove').addEventListener('click', function() {
+document.querySelector('.remove').addEventListener('click', function() {
     fetchAndUpdate('../API/Remove.php', { action: 'remove' });
 });
 
-document.getElementById('shuffle').addEventListener('click', function() {
+document.querySelector('.shuffle').addEventListener('click', function() {
     fetchAndUpdate('../API/Shuffle.php', { action: 'shuffle' });
 });
 async function fetchAndUpdate(url, data) {

@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_tournament'
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <script src="../js/script.js" defer></script>
     <link rel="stylesheet" href="../assets/css/Controls.css">
-    <script src="../js/phpfunctions.js" defer></script>
+    <script src="../js/phpfunctions.js?v=2" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
