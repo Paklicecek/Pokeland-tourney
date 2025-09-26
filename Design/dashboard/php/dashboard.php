@@ -89,6 +89,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_tournament'
                         $preset_title = $row['title'];
                         $preset_rules = $row['rules'];
                         $preset_rewards = $row['rewards'];
+                        $_SESSION['TournamentTitle'] = $preset_title;
+                        $_SESSION['TournamentDescription'] = $preset_rules;
                         $success_message .= "<br>Loaded preset: " . htmlspecialchars($preset_title);
                     }
                 } 
@@ -251,7 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_tournament'
                                     </select>
                                 </div>
                             </div>
-                            <button class="preset-confirm-btn" id="presetConfirmBtn" type="submit">
+                            <button class="preset-confirm-btn preset" id="presetConfirmBtn" type="submit">
                                 <img src="../assets/icons/check.png" alt="" class="preset-img"> Apply Preset
                             </button>
                         </div>

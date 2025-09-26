@@ -21,6 +21,10 @@ document.querySelector('.remove').addEventListener('click', function() {
 document.querySelector('.shuffle').addEventListener('click', function() {
     fetchAndUpdate('../API/Shuffle.php', { action: 'shuffle' });
 });
+document.querySelector('.preset').addEventListener('click', function() {
+    fetchAndUpdate('../API/Preset.php', { action: 'preset' });
+});
+
 async function fetchAndUpdate(url, data) {
     try {
         const response = await fetch(url, {
@@ -37,7 +41,9 @@ async function fetchAndUpdate(url, data) {
             console.log('Result:', result); 
         }
         
-        
+        setTimeout(() => {
+            location.reload();
+        }, 700);
     } catch (error) {
         console.error('Error:', error);
         const resultElement = document.getElementById('result');
