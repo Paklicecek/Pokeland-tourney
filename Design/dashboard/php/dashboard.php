@@ -12,10 +12,6 @@ include 'selector.php';
 
 include 'API.php';
 
-print_r($matchesData[0]);
-var_dump($matchesData[0]);
-print_r($_SESSION['PlayerMatchID']); 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
