@@ -1,8 +1,4 @@
-<?php 
-session_start();
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'preset') {
-    echo "PHP script executed successfully!";
-    
+<?php     
     $username = 'Paklicek';
     $API = include __DIR__ . '../../../../config/api.php';
     $apiKey = $API['apiKey'];
@@ -12,8 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $url = "https://api.challonge.com/v1/tournaments/{$tournamentIdentifier}.json";
     
     $data = [
-        'tournament[name]' => $_SESSION['TournamentTitle'],
-        'tournament[description]' => $_SESSION['TournamentDescription']
+        'tournament[name]' => $preset_title,
+        'tournament[description]' => $preset_rules
     ];
         // 'tournament[url]' => 'updated-tournament-url', přidat později s počítadlem na číslo turnaje
         // 'tournament[start_at]' => '2024-12-31T12:00:00Z', přidat později s automatickým ukazováním času
@@ -34,7 +30,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     $error = curl_error($ch);
     curl_close($ch);
-} else {
-    echo "Invalid request.";
-}
 ?> 

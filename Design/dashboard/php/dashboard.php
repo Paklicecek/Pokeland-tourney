@@ -7,10 +7,36 @@ $servername = $config['host'];
 $dbname = $config['db'];
 $username = $config['user'];
 $password = $config['pass'];
+$names = [];
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        $error_message = "Connection failed: " . $conn->connect_error;
+    } 
+    else {
+        $stmt = $conn->prepare("SELECT Name FROM Players");
+        if ($stmt) {
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $names[] = $row['Name']; 
+                    }
+                }
+            } 
+            $stmt->close();
+        } 
+        $conn->close();
+    }
+$_SESSION['Names'] = $names;
 
 include 'selector.php';
 
-include 'API.php';
+$selectedName = isset($_GET['winner']) ? $_GET['winner'] : '';
+if (!empty($selectedName)) {
+    $_SESSION['winner'] = $selectedName;
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -20,9 +46,9 @@ include 'API.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../assets/css/dashboard.css">
-    <script src="../js/script.js?v=4" defer></script>
+    <script src="../js/script.js?v=5" defer></script>
     <link rel="stylesheet" href="../assets/css/Controls.css">
-    <script src="../js/phpfunctions.js?v=5" defer></script>
+    <script src="../js/phpfunctions.js?v=16" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,15 +136,15 @@ include 'API.php';
                 </div>
             </div>
         </div>
-        <form method="POST" action="dashboard.php">
-            <div class="preset-section">
-                <div class="preset-grid">
+        <div class="preset-section">
+            <div class="preset-grid">
+                <form action="dashboard.php" method="POST">
                     <div class="preset-card">
                         <h2 class="card-title">Tournament Preset</h2>
                         <div class="preset-controls">
                             <div class="custom-select">
                                 <div class="form-group">
-                                    <select name="selected_tournament" id="tournament_select" class="tournament-selector" required>
+                                    <select name="selected_tournament" class="tournament-selector" >
                                     <option value="">-- Select Tournament --</option>
                                     <?php foreach ($tournament_options as $value => $display_name): ?>
                                     <option value="<?php echo htmlspecialchars($value); ?>" 
@@ -129,35 +155,40 @@ include 'API.php';
                                     </select>
                                 </div>
                             </div>
-                            <button class="preset-confirm-btn preset" id="presetConfirmBtn" type="submit">
+                            <button class="preset-confirm-btn preset submit-preset" id="presetConfirmBtn" type="submit">
                                 <img src="../assets/icons/check.png" alt="" class="preset-img"> Apply Preset
                             </button>
                         </div>
                     </div>
-            </form>
+                </form>
                 <!-- Player Selector -->
-                <div class="preset-card">
-                    <h2 class="card-title">Player Selection</h2>
-                    <div class="preset-controls">
-                        <div class="custom-select">
-                            <div class="select-btn" id="playerSelector">
-                                <span id="selectedPlayer">Select Player</span>
-                                <span class="dropdown-arrow">▼</span>
-                            </div>
-                            <div class="dropdown-menu" id="playerDropdown">
-                                <div class="dropdown-option" data-value="player1">
-                                    <span>Paklicek</span>
+                <form method="GET" action="dashboard.php">
+                    <div class="preset-card">
+                        <h2 class="card-title">Player Selection</h2>
+                        <div class="preset-controls">
+                            <div class="custom-select">
+                                <div class="form-group">
+                                    <select name="winner" class="tournament-selector">
+                                        <option value="">-- Select Player --</option>
+                                        <?php if (!empty($names) && is_array($names)): ?>
+                                            <?php foreach ($names as $name): ?>
+                                                <option value="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>"
+                                                    <?php echo ($selectedName === $name) ? 'selected' : ''; ?>>
+                                                    <?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <option value="" disabled>No players available</option>
+                                        <?php endif; ?>
+                                    </select>
                                 </div>
-                                <div class="dropdown-option" data-value="player2">
-                                    <span>Cakeman</span>
-                                </div>
                             </div>
+                            <button class="preset-confirm-btn submit-player" id="playerConfirmBtn" type="submit">
+                                <img src="../assets/icons/check.png" alt="" class="preset-img"> Apply Player
+                            </button>
                         </div>
-                        <button class="preset-confirm-btn" id="playerConfirmBtn">
-                            <img src="../assets/icons/check.png" alt="" class="preset-img"> Apply Player
-                        </button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 

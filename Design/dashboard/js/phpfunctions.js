@@ -21,8 +21,25 @@ document.querySelector('.remove').addEventListener('click', function() {
 document.querySelector('.shuffle').addEventListener('click', function() {
     fetchAndUpdate('../API/Shuffle.php', { action: 'shuffle' });
 });
-document.querySelector('.preset').addEventListener('click', function() {
-    fetchAndUpdate('../API/Preset.php', { action: 'preset' });
+
+document.querySelector('.submit-player').addEventListener('click', function(e) {
+    e.preventDefault(); // Stop the form from submitting
+    
+    const form = this.closest('form');
+    const formData = new FormData(form);
+    const winner = formData.get('winner');
+    
+    if (!winner) {
+        alert('Please select a player first');
+        return;
+    }
+    
+    // First, manually submit to save in session
+    fetch(`dashboard.php?winner=${encodeURIComponent(winner)}`)
+        .then(() => {
+            // Then call winner.php
+            return fetchAndUpdate('winner.php', { action: 'report_winner' });
+        });
 });
 
 async function fetchAndUpdate(url, data) {
@@ -43,7 +60,7 @@ async function fetchAndUpdate(url, data) {
         
         setTimeout(() => {
             location.reload();
-        }, 700);
+        }, 2000);
     } catch (error) {
         console.error('Error:', error);
         const resultElement = document.getElementById('result');

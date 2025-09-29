@@ -17,28 +17,6 @@ if(!isset($_SESSION['permission']) || $_SESSION['permission'] !== true)
     header('Location: login.php');
     exit;
 }
-$names = [];
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        $error_message = "Connection failed: " . $conn->connect_error;
-    } 
-    else {
-        $stmt = $conn->prepare("SELECT Name FROM Players");
-        if ($stmt) {
-            if ($stmt->execute()) {
-                $result = $stmt->get_result();
-                if ($result && $result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        $names[] = $row['Name']; 
-                    }
-                }
-            } 
-            $stmt->close();
-        } 
-        $conn->close();
-    }
-$_SESSION['Names'] = $names;
 
 $current_tournament = isset($_SESSION['current_tournament']) ? $_SESSION['current_tournament'] : 'Default Tournament';
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -89,8 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_tournament'
                         $preset_title = $row['title'];
                         $preset_rules = $row['rules'];
                         $preset_rewards = $row['rewards'];
-                        $_SESSION['TournamentTitle'] = $preset_title;
-                        $_SESSION['TournamentDescription'] = $preset_rules;
                         $success_message .= "<br>Loaded preset: " . htmlspecialchars($preset_title);
                     }
                 } 
@@ -135,5 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_tournament'
 
         $conn->close();
     }
+    //CALL TO PRESET ON API SIDE
+    include "../API/Preset.php";
 }
 ?>
