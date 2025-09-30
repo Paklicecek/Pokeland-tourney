@@ -1,5 +1,4 @@
 <?php     
-// zkontrolovat form funkce form process isformfilled showForm
 session_start(); 
 
 $config = include __DIR__ . '../../../../config/db_credentials.php';
@@ -45,9 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         }
                         header('Location: /dashboard/php/dashboard.php');
                         exit;
-                    } 
+                    }
                     else {
                         $error = 'Invalid username or password.';
+                        $correct = false;
                     }
                 } else {
                     $error = 'Invalid username or password.';
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel Login</title>
-    <link rel="stylesheet" href="./../assets/css/login.css?v=13">
+    <link rel="stylesheet" href="./../assets/css/login.css?v=14">
 </head>
 <body>
     <div class="particles" id="particles"></div>
@@ -76,10 +76,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="logo-container">
             <img src="./../assets/icons/shield.png" class="logo">
         </div>
-        
-        <h1>Dashboard Login</h1>
-        <p class="subtitle">Welcome back! Please sign in to your account.</p>
-        
+        <div class="container">
+            <h1>Dashboard Login</h1>
+            <p class="subtitle">Welcome back! Please sign in to your account.</p>
+            <?php 
+                if(!$correct){
+                    echo '<p class="error subtitle">' . $error . '</p>';
+                }
+            ?>
+        </div>
         <form action="./login.php" method="POST">
             <div class="form-group">
                 <label for="user">Username</label>
