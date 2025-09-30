@@ -2,6 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'remove') {
 
     echo "PHP script executed successfully!";
+    $_SESSION['Response'] = true;
 
     $username = 'Paklicek';
     $API = include __DIR__ . '../../../../config/api.php';

@@ -108,6 +108,8 @@ $update = callChallonge(
 );
 
 echo "Reported winner: {$playerName} (participant id {$pid}) for match {$selected['id']}.\n";
+$_SESSION['Response'] = true;
+
 } else {
     echo "Invalid request.";
 }

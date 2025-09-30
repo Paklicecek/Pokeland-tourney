@@ -131,7 +131,14 @@ if (!empty($selectedName)) {
                     </div>
                     <div class="response-container">
                         <div class="stat-label">Request response</div>
-                        <div class="stat-number">Placeholder for php response</div>
+                        <?php
+                        if($_SESSION['Response']){
+                            echo '<p class="stat-number" "correct">Executed</p>';
+                        }
+                        else{
+                            echo '<p class="stat-number" "false">Error</p>';
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'matches') {
     echo "PHP script executed successfully!";
+    $_SESSION['Response'] = true;
 
     $username = 'Paklicek';
     $API = include __DIR__ . '../../../../config/api.php';
