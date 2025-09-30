@@ -74,7 +74,7 @@ if (!empty($selectedName)) {
                     <a href="#" class="nav-link">
                         <img src="../assets/icons/trophygray.png" class="tournaments-icon nav-icon">
                         <span class="nav-icon"></span>
-                        Tournaments
+                        Coming soon
                     </a>
                 </li>
                 <li class="nav-item">
@@ -113,7 +113,9 @@ if (!empty($selectedName)) {
                     </div>
                     <div class="player-container">
                         <div class="stat-label">Total Players</div>
-                        <div class="stat-number">1,284</div>
+                        <div class="stat-number">
+                            <?php echo count($names); ?>
+                        </div>
                     </div>
                 </div>
                 <div class="stat-card trophy-card">
@@ -122,7 +124,9 @@ if (!empty($selectedName)) {
                     </div>
                     <div class="counter-container">
                         <div class="stat-label">Tournament Counter</div>
-                        <div class="stat-number">1</div>
+                        <div class="stat-number"> 
+                            Awaiting fix
+                        </div>
                     </div>
                 </div>
                 <div class="stat-card">
@@ -131,14 +135,15 @@ if (!empty($selectedName)) {
                     </div>
                     <div class="response-container">
                         <div class="stat-label">Request response</div>
-                        <?php
+                        <p class="stat-number">Still not working awaiting fix</p>
+                        <!-- <?php
                         if($_SESSION['Response']){
                             echo '<p class="stat-number" "correct">Executed</p>';
                         }
                         else{
                             echo '<p class="stat-number" "false">Error</p>';
                         }
-                        ?>
+                        ?> -->
                     </div>
                 </div>
             </div>

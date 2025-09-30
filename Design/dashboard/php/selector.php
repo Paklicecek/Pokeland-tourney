@@ -43,6 +43,7 @@ if (!empty($titles)) {
     $tournament_options = array('Default Tournament' => 'Default Tournament');
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_tournament'])) {
+        $_SESSION['Response'] = true;
         $selected_tournament = $_POST['selected_tournament'];
         $_SESSION['current_tournament'] = $selected_tournament;
         $current_tournament = $selected_tournament;

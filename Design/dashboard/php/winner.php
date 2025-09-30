@@ -6,7 +6,8 @@ if (!isset($_SESSION['winner']) || empty($_SESSION['winner'])) {
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // report_single_player_winner.php
-$apiKey     = 'ugHndIRihqjlBC7up0wqw7KVU2LjN1nD1YwRrEjj';
+$API = include __DIR__ . '../../../../config/api.php';
+$apiKey = $API['apiKey'];
 $tournament = 'myTest92521';   // or 'cs-myTest92521' if your tournament is on a subdomain
 $playerName = $_SESSION['winner'];
 
