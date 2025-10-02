@@ -1,7 +1,7 @@
 /* FIX THE HOVER ANIMATION ON SOCIAL LINKS */
 
 footer {
-    background-color: rgba(23, 23, 46, 0.2);
+    background-color: #09061F;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-top: 2px solid rgba(255, 255, 255, 0.3);
