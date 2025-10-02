@@ -1,0 +1,44 @@
+body{
+    background-color: rgb(32, 10, 53);
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    color: white;
+    margin-bottom: 8px;
+}
+input{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 8px;
+    font-size: 16px;
+}
+label{
+    font-size: 18px;
+}
+.control-card {
+    background: #161B22;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    width: 40%;
+}
+
+.control-card:hover {
+    transform: translateY(-2px);
+}
+.create-button{
+    margin-top: 8px;
+    width: 100%;
+    padding: 8px;
+    font-size: 18px;
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}

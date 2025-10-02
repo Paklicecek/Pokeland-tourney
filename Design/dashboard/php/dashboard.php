@@ -49,6 +49,7 @@ if (!empty($selectedName)) {
     <script src="../js/script.js?v=5" defer></script>
     <link rel="stylesheet" href="../assets/css/Controls.css">
     <script src="../js/phpfunctions.js?v=16" defer></script>
+    <link rel="stylesheet" href="../assets/css/Creation.css?v=4">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,14 +137,6 @@ if (!empty($selectedName)) {
                     <div class="response-container">
                         <div class="stat-label">Request response</div>
                         <p class="stat-number">Still not working awaiting fix</p>
-                        <!-- <?php
-                        if($_SESSION['Response']){
-                            echo '<p class="stat-number" "correct">Executed</p>';
-                        }
-                        else{
-                            echo '<p class="stat-number" "false">Error</p>';
-                        }
-                        ?> -->
                     </div>
                 </div>
             </div>
@@ -236,6 +229,24 @@ if (!empty($selectedName)) {
                 </div>
             </div>
         </div>
+        <div class="input-card">
+            <form action="add.php" method="POST">
+                <h2 class="input-title">Create a preset</h2>
+                <div class="input-container">
+                    <label for="title" class="label-title">Title</label>
+                    <input type="text" class="input title" name="title" placeholder="Singles unlimited..." require>
+        
+                    <label for="rules" class="label-rules">Rules</label>
+                    <input type="text"class="input rules" name="rules" placeholder="Povolena 1 legenda/ultrabeast/paradox..." require>
+        
+                    <label for="rewards" class="label-rewards">Rewards</label>
+                    <input type="text" class="input rewards" name="rewards" placeholder="1. 5 event klíčů navíc..." require>
+                </div>
+                <button type="submit" class="preset-confirm-btn create-button">Create</button>
+            </form>
+        </div>
+        <!-- <form action="remove.php" method = "POST">
+        </form> -->
     </main>
 </body>
 </html>

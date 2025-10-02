@@ -25,6 +25,29 @@ $response = curl_exec($ch);
 $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 $error = curl_error($ch);
 curl_close($ch);
+
+$config = include __DIR__ . '../../../../config/db_credentials.php';
+
+$servername = $config['host'];
+$dbname = $config['db'];
+$username = $config['user'];
+$password = $config['pass'];
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        $error_message = "Connection failed: " . $conn->connect_error;
+    }
+    else{
+        $res = $conn->query("SELECT 'counter'");
+        if ($res) {
+            while ($row = $res->fetch_assoc()) {
+                $titles[] = $row['title'];
+            }
+            $res->free();
+        }
+    }
+    $conn->close();
+
 } else {
     echo "Invalid request.";
 }
