@@ -28,7 +28,7 @@
             </div>
             <div class="nav">
                 <a href="#info" class="tournament">Tournament</a>
-                <a href="#" class="brackets">Brackets</a>
+                <a href="tournament/html/index.html" class="brackets">Brackets</a>
                 <a href="#rules" class="rules">Rules</a>
             </div>
             <a class="button" href="./login/php/login.php">Admin Login</a>        
@@ -51,8 +51,8 @@
                     </div>
                 </div>
                 <div class="buttonContainer">
-                    <button class="viewBrackets">View Brackets</button>
-                    <button class="viewRules">Tournament Rules</button>
+                    <a class="viewBrackets links">View Brackets</a>
+                    <a class="viewRules links">Tournament Rules</a>
                 </div>
             </div>
         </section>
@@ -169,6 +169,14 @@
                 }, 300); 
             }
         }
+        // explain this code below 
+        // Smooth scrolling for internal links
+        // What does that mean?
+        // It means that when you click on a link that points to a section within the same page (like #info or #rules),
+        // the page will scroll smoothly to that section instead of jumping abruptly.
+        // This enhances user experience by providing a visually appealing transition.
+        // The code selects all anchor tags with href attributes that start with '#'
+        // and adds a click event listener to each of them.
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();

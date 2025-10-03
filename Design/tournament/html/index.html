@@ -9,21 +9,22 @@
     <link rel="stylesheet" href="../assets/footer.css">
 </head>
 <body>
+    <div class="particles" id="particles"></div>
     <header>
         <div class="header">
             <div class="title">
-                <a href=""><img src="../../index/icons/Logo.png" alt="logo" class="logo"></a>
+                <a href="https://turnaje.fun/"><img src="../../index/icons/Logo.png" alt="logo" class="logo"></a>
                 <div class="group">
-                    <span class="title-pokeland title">Pokeland</span>
-                    <span class="title-pokeland hub">Tournament Hub</span>
+                    <a href="https://turnaje.fun/" class="title-pokeland title">Pokeland</a>
+                    <a href="https://turnaje.fun/" class="title-pokeland hub">Tournament Hub</a>
                 </div>
             </div>
             <div class="nav">
-                <a href="#" class="tournament">Tournament</a>
+                <a href="https://turnaje.fun/" class="tournament">Tournament</a>
                 <a href="#" class="brackets">Brackets</a>
-                <a href="#" class="rules">Rules</a>
+                <a href="https://turnaje.fun/#rules" class="rules">Rules</a>
             </div>
-            <button class="button">Admin Login</button>
+            <a class="button" href="../../login/php/login.php">Admin Login</a> 
         </div>
     </header>
 
@@ -39,7 +40,6 @@
 
 <footer>
     <div class="footer-content">
-        <!-- Left Section: Brand -->
         <div class="footer-brand">
            <a href="https://pokeland.cz/" class="footer-icon"><img src="../../index/icons/Logo.png" alt="Pokeland Logo" style="width: 60px; height: 60px;"></a>
             <div class="footer-brand-text">
@@ -57,10 +57,27 @@
         </div>
 
         <div class="footer-links">
-            <a href="#rules">Rules</a>
+            <a href="https://turnaje.fun/#rules">Rules</a>
             <a href="https://store.rajce.pro/categories/Pokeland/klice">Store</a>
         </div>
     </div>
 </footer>
+<script>
+            function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 10) + 's';
+                particlesContainer.appendChild(particle);
+                }, 300); 
+            }
+        }
+        createParticles();  
+</script>
 </body>
 </html>

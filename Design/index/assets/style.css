@@ -160,5 +160,9 @@ main {
 section {
     scroll-margin-top: 10vh; 
 }
-
+.links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
