@@ -17,7 +17,7 @@ body {
     color: white;
     display: grid;
     grid-template-areas: 
-        "sidebar header"
+        "sidebar main"
         "sidebar main";
     grid-template-columns: 280px 1fr;
     grid-template-rows: 70px 1fr;
@@ -34,26 +34,11 @@ body {
 nav{
     padding: 20px;
 }
-header {
-    grid-area: header;
-    background: var(--background-dark);
-    backdrop-filter: blur(10px);
-    padding: 0 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
-.header-title {
-    font-size: 32px;
-    padding-top: 1rem;
-    font-weight: 600;
-    color: var(--text-light);
-}
 
 main {
     grid-area: main;
-    padding: 5px 30px 30px 30px;
+    padding: 30px 30px 30px 30px;
     background: var(--background-dark);
     overflow-y: auto;
 }

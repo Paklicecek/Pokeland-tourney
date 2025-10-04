@@ -1,14 +1,77 @@
+<?php
+$config = include __DIR__ . '../../config/db_credentials.php';
+
+$servername = $config['host'];
+$dbname = $config['db'];
+$username = $config['user'];
+$password = $config['pass'];
+
+$success_message = '';
+$error_message = '';
+
+$title = "";
+$rules = "";
+$rewards = "";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        $error_message = "Connection failed: " . $conn->connect_error;
+    } 
+    else {
+        $stmt = $conn->prepare("SELECT title, rules, rewards FROM active_preset");
+        if ($stmt) {
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                if ($result && $result->num_rows > 0) {
+
+                    $row = $result->fetch_assoc();
+
+                    $title = $row['title'];
+                    $rules = $row['rules'];
+                    $rewards = $row['rewards'];
+                }
+            } 
+            $stmt->close();
+        } 
+        $conn->close();
+    }
+
+
+    $names = [];
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        $error_message = "Connection failed: " . $conn->connect_error;
+    } 
+    else {
+        $stmt = $conn->prepare("SELECT Name FROM Players");
+        if ($stmt) {
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $names[] = $row['Name']; 
+                    }
+                }
+            } 
+            $stmt->close();
+        } 
+        $conn->close();
+    }
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokeland Tourneys</title>
-    <link rel="stylesheet" href="./index/assets/main.css?v=242">
-    <link rel="stylesheet" href="./index/assets/nav.css?v=3">
-    <link rel="stylesheet" href="./index/assets/style.css?v=24">
-    <link rel="stylesheet" href="./index/assets/tournament.css?v=25">
-    <link rel="stylesheet" href="./index/assets/footer.css">
+    <link rel="stylesheet" href="./index/assets/main.css?v=22">
+    <link rel="stylesheet" href="./index/assets/nav.css?v=4">
+    <link rel="stylesheet" href="./index/assets/style.css?v=25">
+    <link rel="stylesheet" href="./index/assets/tournament.css?v=8">
+    <link rel="stylesheet" href="./index/assets/footer.css?v=67">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,15 +107,27 @@
                         <img src="index/icons/TrophyYellow.png" alt="" class="trophyYellow">
                         <p class="current">Current Tournament</p>
                     </div>
-                    <p class="currentTitle">Singles unlimited</p>
+                    <p class="currentTitle">
+                        <?php 
+                            echo $title; 
+                        ?>
+                    </p>
                     <div class="dateContainer">
-                        <p class="date"><img src="./index/icons/Date.png" alt="" class="img">Dec 19</p>
-                        <p class="players"><img src="./index/icons/Bolt.png" alt="" class="img">32 Players</p>
+                        <p class="date"><img src="./index/icons/Date.png" alt="" class="img">
+                            Fix
+                            Fix
+                        </p>
+                        <p class="players"><img src="./index/icons/Bolt.png" alt="" class="img"> 
+                            <?php
+                                echo count($names);
+                            ?>
+                            Players
+                        </p>
                     </div>
                 </div>
                 <div class="buttonContainer">
-                    <a class="viewBrackets links">View Brackets</a>
-                    <a class="viewRules links">Tournament Rules</a>
+                    <a class="viewBrackets links" href="">View Brackets</a>
+                    <a class="viewRules links" href="#rules">Tournament Rules</a>
                 </div>
             </div>
         </section>
@@ -81,12 +156,20 @@
                                 <div class="tournament-rule-header">
                                     <!-- add icon here -->
                                     <div class="tournament-rule-icon">🛡️</div>
-                                    <h3 class="tournament-rule-title">Battle Format</h3>
+                                    <h3 class="tournament-rule-title">
+                                        <?php 
+                                            echo $title;
+                                        ?>
+                                    </h3>
                                 </div>
                                 <div class="tournament-rule-item">
                                     <!-- Get rules from DB -->
                                     <div class="tournament-rule-bullet"></div>
-                                    <span>Single Elimination Format with double elimination in finals. PLACEHOLDER</span>
+                                    <span>
+                                        <?php 
+                                            echo nl2br(htmlspecialchars($rules));
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                         </div>

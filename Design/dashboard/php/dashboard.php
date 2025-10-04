@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+if(!isset($_SESSION['permission']) || $_SESSION['permission'] !== true)
+{
+    header('Location: login.php');
+    exit;
+}
+
 $config = include __DIR__ . '../../../../config/db_credentials.php';
 
 $servername = $config['host'];
@@ -45,12 +51,12 @@ if (!empty($selectedName)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/dashboard.css">
-    <script src="../js/script.js?v=5" defer></script>
-    <link rel="stylesheet" href="../assets/css/Controls.css">
-    <script src="../js/phpfunctions.js?v=16" defer></script>
-    <link rel="stylesheet" href="../assets/css/Creation.css?v=4">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?v=87">
+    <link rel="stylesheet" href="../assets/css/Controls.css?v=62">
+    <link rel="stylesheet" href="../assets/css/Creation.css?v=7">
 
+    <script src="../js/script.js?v=5" defer></script>
+    <script src="../js/phpfunctions.js?v=16" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -72,10 +78,10 @@ if (!empty($selectedName)) {
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="../../tournament/html/index.html" class="nav-link">
                         <img src="../assets/icons/trophygray.png" class="tournaments-icon nav-icon">
                         <span class="nav-icon"></span>
-                        Coming soon
+                        Coming soon 
                     </a>
                 </li>
                 <li class="nav-item">
@@ -96,16 +102,9 @@ if (!empty($selectedName)) {
         </div>
     </aside>
 
-    <header>
-        <h1 class="header-title">Admin Dashboard</h1>
-    </header>
-
     <main>
 
         <div class="dashboard-content">
-            <p class="welcome-text">
-                Welcome back, Admin! Manage your tournaments and settings here.
-            </p>
             
             <div class="stats-grid">
                 <div class="stat-card">
@@ -115,7 +114,7 @@ if (!empty($selectedName)) {
                     <div class="player-container">
                         <div class="stat-label">Total Players</div>
                         <div class="stat-number">
-                            <?php echo count($names); ?>
+                            <?php echo count($names); ?> 
                         </div>
                     </div>
                 </div>
@@ -234,13 +233,13 @@ if (!empty($selectedName)) {
                 <h2 class="input-title">Create a preset</h2>
                 <div class="input-container">
                     <label for="title" class="label-title">Title</label>
-                    <input type="text" class="input title" name="title" placeholder="Singles unlimited..." require>
+                    <input type="text" class="input title" name="title" id="title" placeholder="Singles unlimited..." require>
         
                     <label for="rules" class="label-rules">Rules</label>
-                    <input type="text"class="input rules" name="rules" placeholder="Povolena 1 legenda/ultrabeast/paradox..." require>
+                    <input type="text"class="input rules" name="rules" id="rules" placeholder="Povolena 1 legenda/ultrabeast/paradox..." require>
         
                     <label for="rewards" class="label-rewards">Rewards</label>
-                    <input type="text" class="input rewards" name="rewards" placeholder="1. 5 event klíčů navíc..." require>
+                    <input type="text" class="input rewards" name="rewards" id="rewards" placeholder="1. 5 event klíčů navíc..." require>
                 </div>
                 <button type="submit" class="preset-confirm-btn create-button">Create</button>
             </form>

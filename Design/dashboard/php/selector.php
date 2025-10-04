@@ -12,12 +12,6 @@ $error_message = '';
 
 $titles = [];
 
-if(!isset($_SESSION['permission']) || $_SESSION['permission'] !== true)
-{
-    header('Location: login.php');
-    exit;
-}
-
 $current_tournament = isset($_SESSION['current_tournament']) ? $_SESSION['current_tournament'] : 'Default Tournament';
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
