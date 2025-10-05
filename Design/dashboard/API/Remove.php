@@ -1,7 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'remove') {
-
-    echo "PHP script executed successfully!";
+    echo "<p class='success'>Please wait 2 seconds for response!</p>";
     $_SESSION['Response'] = true;
 
     $username = 'Paklicek';

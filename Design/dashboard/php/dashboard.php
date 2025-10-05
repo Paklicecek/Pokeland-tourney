@@ -51,12 +51,12 @@ if (!empty($selectedName)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/dashboard.css?v=87">
-    <link rel="stylesheet" href="../assets/css/Controls.css?v=62">
-    <link rel="stylesheet" href="../assets/css/Creation.css?v=7">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?v=2">
+    <link rel="stylesheet" href="../assets/css/Controls.css?v=64">
+    <link rel="stylesheet" href="../assets/css/Creation.css?v=10">
 
-    <script src="../js/script.js?v=5" defer></script>
-    <script src="../js/phpfunctions.js?v=16" defer></script>
+    <script src="../js/script.js?v=6" defer></script>
+    <script src="../js/phpfunctions.js?v=17" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -125,7 +125,45 @@ if (!empty($selectedName)) {
                     <div class="counter-container">
                         <div class="stat-label">Tournament Counter</div>
                         <div class="stat-number"> 
-                            Awaiting fix
+                            <?php
+                            $conn = new mysqli($servername, $username, $password, $dbname);
+                            if ($conn->connect_error) {
+                                $error_message = "Connection failed: " . $conn->connect_error;
+                            } 
+                            else {
+                                $stmt = $conn->prepare("SELECT Tcount FROM Tcounter");
+                                if ($stmt) {
+                                    if ($stmt->execute()) {
+                                        $result = $stmt->get_result();
+                                        if ($result && $result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                $counter = $row['Tcount']; 
+                                            }
+                                        }
+                                    } 
+                                    $stmt->close();
+                                } 
+                                $conn->close();
+                            }
+                            if(isset($_SESSION['counter'])){
+                                $counter = $counter + $_SESSION['counter'];
+                                unset($_SESSION['counter']);
+                                $conn = new mysqli($servername, $username, $password, $dbname);
+                                if ($conn->connect_error) {
+                                    $error_message = "Connection failed: " . $conn->connect_error;
+                                } 
+                                else {
+                                    $stmt = $conn->prepare("UPDATE Tcounter SET Tcount = ?");
+                                    if($stmt){
+                                        $stmt->bind_param('i', $counter);
+                                        $stmt->execute();
+                                        $stmt->close();
+                                    }
+                                }
+                                $conn->close();
+                            }
+                            echo $counter;
+                            ?>      
                         </div>
                     </div>
                 </div>
@@ -135,7 +173,20 @@ if (!empty($selectedName)) {
                     </div>
                     <div class="response-container">
                         <div class="stat-label">Request response</div>
-                        <p class="stat-number">Still not working awaiting fix</p>
+                        <p class="stat-number">
+                            <?php
+                            if($_SESSION['Response'] === true){
+                                echo "Executed successfully";
+                            }
+                            else if($_SESSION['Response'] === false){
+                                echo "An error occurred";
+                            }
+                            else{
+                                echo "No requests made yet";
+                            }
+                            unset($_SESSION['Response']);
+                            ?>
+                        </p>
                     </div>
                 </div>
             </div>

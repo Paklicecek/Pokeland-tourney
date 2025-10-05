@@ -101,7 +101,7 @@ $rewards = "";
         <section id="info" class="sec-info">
             <div class="container">
                 <p class="mainTitle"><strong>Pokeland Tournaments</strong></p>
-                <p class="slug">Join the ultimate Pokemon competitive scene. Battle, compete,<br> and become the champion!</p>
+                <p class="slug">Join the ultimate Pokemon competitive scene. Battle, compete,<br> and get free rewards!</p>
                 <div class="card">
                     <div class="currentTournament">
                         <img src="index/icons/TrophyYellow.png" alt="" class="trophyYellow">
@@ -114,8 +114,25 @@ $rewards = "";
                     </p>
                     <div class="dateContainer">
                         <p class="date"><img src="./index/icons/Date.png" alt="" class="img">
-                            Fix
-                            Fix
+                                            <?php
+                    date_default_timezone_set('Europe/Prague'); 
+
+                    $now = new DateTime();
+
+                    $days = ['Thursday', 'Sunday'];
+                    $nextTournament = null;
+
+                    foreach ($days as $day) {
+                        $candidate = new DateTime("next $day 19:00");
+                        if ($now->format('l') === $day && $now < new DateTime("today 19:00")) {
+                            $candidate = new DateTime("today 19:00");
+                        }
+                        if ($nextTournament === null || $candidate < $nextTournament) {
+                            $nextTournament = $candidate;
+                        }
+                    }
+                    echo $nextTournament->format('l, d.m H:i');
+                    ?>
                         </p>
                         <p class="players"><img src="./index/icons/Bolt.png" alt="" class="img"> 
                             <?php

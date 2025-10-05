@@ -37,7 +37,6 @@ if (!empty($titles)) {
     $tournament_options = array('Default Tournament' => 'Default Tournament');
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_tournament'])) {
-        $_SESSION['Response'] = true;
         $selected_tournament = $_POST['selected_tournament'];
         $_SESSION['current_tournament'] = $selected_tournament;
         $current_tournament = $selected_tournament;
@@ -108,5 +107,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_tournament'
     }
     //CALL TO PRESET ON API SIDE
     include "../API/Preset.php";
+    $_SESSION['Response'] = true;
+    
+}
+else {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $_SESSION['Response'] = false;
+    }
 }
 ?>

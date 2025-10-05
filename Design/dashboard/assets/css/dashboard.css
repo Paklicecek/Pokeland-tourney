@@ -446,3 +446,8 @@ main {
     background: #0D1117;
     color: #ffffff;
 }
+.success{
+    color: rgba(22, 163, 74, 0.788);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}

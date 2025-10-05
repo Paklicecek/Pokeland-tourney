@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'end') {
-    echo "PHP script executed successfully!";
+    echo "<p class='success'>Please wait 2 seconds for response!</p>";
     $_SESSION['Response'] = true;
 
     $API = include __DIR__ . '../../../../config/api.php';

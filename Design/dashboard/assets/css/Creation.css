@@ -11,11 +11,19 @@ body{
 input{
     background-color: #0D1117;
     color: white;
-    border-radius: 5px;
     border: none;
-    padding: 8px;
-    font-size: 16px;
+    font-size: 14px;
     width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 12px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+input[type="text"]:focus{
+    border-color: #6366F1;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    transform: translateY(-2px);
 }
 label{
     font-size: 16px;

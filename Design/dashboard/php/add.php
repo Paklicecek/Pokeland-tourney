@@ -27,6 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['title']) && !empty($
                 header('Location: dashboard.php');
                 exit();
             }
+            else {
+                $_SESSION['Response'] = false;
+            }
             $stmt->close();
         }
     }
