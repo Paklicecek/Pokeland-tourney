@@ -53,10 +53,10 @@ if (!empty($selectedName)) {
     <title>Dashboard</title>
     <link rel="stylesheet" href="../assets/css/dashboard.css?v=2">
     <link rel="stylesheet" href="../assets/css/Controls.css?v=64">
-    <link rel="stylesheet" href="../assets/css/Creation.css?v=10">
+    <link rel="stylesheet" href="../assets/css/Creation.css?v=27">
 
     <script src="../js/script.js?v=7" defer></script>
-    <script src="../js/phpfunctions.js?v=18" defer></script>
+    <script src="../js/phpfunctions.js?v=17" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -279,6 +279,7 @@ if (!empty($selectedName)) {
                 </div>
             </div>
         </div>
+    <div class="input-section">
         <div class="input-card">
             <form action="add.php" method="POST">
                 <h2 class="input-title">Create a preset</h2>
@@ -295,22 +296,28 @@ if (!empty($selectedName)) {
                 <button type="submit" class="preset-confirm-btn create-button">Create</button>
             </form>
         </div>
-        <div class="input-card">
-            <form action="remove.php" method="POST">
-                <h2 class="input-title">Create a preset</h2>
+        <div class="input-card remove-card">
+                <h2 class="input-title">Add & Remove</h2>
                 <div class="input-container">
-                    <label for="title" class="label-title">Title</label>
-                    <input type="text" class="input title" name="title" id="title" placeholder="Singles unlimited..." require>
-        
-                    <label for="rules" class="label-rules">Rules</label>
-                    <input type="text"class="input rules" name="rules" id="rules" placeholder="Povolena 1 legenda/ultrabeast/paradox..." require>
-        
-                    <label for="rewards" class="label-rewards">Rewards</label>
-                    <input type="text" class="input rewards" name="rewards" id="rewards" placeholder="1. 5 event klíčů navíc..." require>
+                    <form action="addPlayer.php" method="POST">
+                        <label for="add-player" class="label-title">Add a player</label>
+
+                        <div class="input-section2">
+                        <input type="text" class="remove-input" name="add-player" id="add-player" placeholder="Paklicek" require>
+                        <button type="submit" class="preset-confirm-btn remove-button">Add</button>
+                        </div>
+                    </form>
+                    <form action="removePlayer.php" method="POST">
+                        <label for="remove-player" class="label-rules">Remove a player</label>
+
+                        <div class="input-section2">
+                            <input type="text"class="remove-input" name="remove-player" id="remove-player" placeholder="Cakeman" require>
+                            <button type="submit" class="preset-confirm-btn remove-button">Remove</button>
+                        </div>
+                    </form>
                 </div>
-                <button type="submit" class="preset-confirm-btn create-button">Create</button>
-            </form>
         </div>
+    </div>
     </main>
 </body>
 </html>
