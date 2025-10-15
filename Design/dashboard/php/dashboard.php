@@ -55,8 +55,8 @@ if (!empty($selectedName)) {
     <link rel="stylesheet" href="../assets/css/Controls.css?v=64">
     <link rel="stylesheet" href="../assets/css/Creation.css?v=10">
 
-    <script src="../js/script.js?v=6" defer></script>
-    <script src="../js/phpfunctions.js?v=17" defer></script>
+    <script src="../js/script.js?v=7" defer></script>
+    <script src="../js/phpfunctions.js?v=18" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -256,25 +256,25 @@ if (!empty($selectedName)) {
                         <div class="control-icon"><img src="../assets/icons/start.png" alt="" class="control-logo"></div>
                         <div class="control-text">Start<br>Tournament</div>
                     </button>
-                    <button class="control-btn end">
-                        <div class="control-icon"><img src="../assets/icons/end.png" alt="" class="control-logo"></div>
-                        <div class="control-text">End<br>Tournament</div>
+                    <button class="control-btn reset">
+                        <div class="control-icon"><img src="../assets/icons/restart.png" alt="" class="control-logo"></div>
+                        <div class="control-text">Reset<br>Brackets</div>
                     </button>
                     <button class="control-btn matches">
                         <div class="control-icon"><img src="../assets/icons/generate.png" alt="" class="control-logo"></div>
                         <div class="control-text">Generate<br>Matches</div>
                     </button>
-                    <button class="control-btn reset">
-                        <div class="control-icon"><img src="../assets/icons/restart.png" alt="" class="control-logo"></div>
-                        <div class="control-text">Reset<br>Brackets</div>
-                    </button>
-                    <button class="control-btn finish remove">
-                        <div class="control-icon"><img src="../assets/icons/trophy.png" alt="" class="control-logo"></div>
-                        <div class="control-text">Remove<br>Players</div>
-                    </button>
                     <button class="control-btn soon shuffle">
                         <div class="control-icon"><img src="../assets/icons/soon.png" alt="" class="control-logo"></div>
                         <div class="control-text">Shuffle<br>Seeds</div>
+                    </button>
+                    <button class="control-btn finish remove">
+                        <div class="control-icon"><img src="../assets/icons/trophy.png" alt="" class="control-logo"></div>
+                        <div class="control-text">Remove players<br>from brackets</div>
+                    </button>
+                    <button class="control-btn end removeDB">
+                        <div class="control-icon"><img src="../assets/icons/end.png" alt="" class="control-logo"></div>
+                        <div class="control-text">Remove players<br>from DB</div>
                     </button>
                 </div>
             </div>
@@ -295,8 +295,22 @@ if (!empty($selectedName)) {
                 <button type="submit" class="preset-confirm-btn create-button">Create</button>
             </form>
         </div>
-        <!-- <form action="remove.php" method = "POST">
-        </form> -->
+        <div class="input-card">
+            <form action="remove.php" method="POST">
+                <h2 class="input-title">Create a preset</h2>
+                <div class="input-container">
+                    <label for="title" class="label-title">Title</label>
+                    <input type="text" class="input title" name="title" id="title" placeholder="Singles unlimited..." require>
+        
+                    <label for="rules" class="label-rules">Rules</label>
+                    <input type="text"class="input rules" name="rules" id="rules" placeholder="Povolena 1 legenda/ultrabeast/paradox..." require>
+        
+                    <label for="rewards" class="label-rewards">Rewards</label>
+                    <input type="text" class="input rewards" name="rewards" id="rewards" placeholder="1. 5 event klíčů navíc..." require>
+                </div>
+                <button type="submit" class="preset-confirm-btn create-button">Create</button>
+            </form>
+        </div>
     </main>
 </body>
 </html>

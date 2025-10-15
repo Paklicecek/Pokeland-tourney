@@ -2,8 +2,8 @@ document.querySelector('.start').addEventListener('click', function() {
     fetchAndUpdate('../API/Start.php', { action: 'start' });
 });
 
-document.querySelector('.end').addEventListener('click', function() {
-    fetchAndUpdate('../API/End.php', { action: 'end' });
+document.querySelector('.removeDB').addEventListener('click', function() {
+    fetchAndUpdate('../API/removeDB.php', { action: 'removeDB' });
 });
 
 document.querySelector('.matches').addEventListener('click', function() {
