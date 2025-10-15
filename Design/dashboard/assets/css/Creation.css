@@ -25,6 +25,18 @@ input[type="text"]:focus{
     box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
     transform: translateY(-2px);
 }
+.tournament-selector2{
+    width: 80%;
+    padding: 10px;
+    background: #0D1117;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 1rem;
+    height: 2.5rem;
+    font-size: 14px;
+    overflow: hidden;
+}
 .remove-input{
     background-color: #0D1117;
     color: white;

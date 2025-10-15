@@ -51,9 +51,9 @@ if (!empty($selectedName)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/dashboard.css?v=2">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?v=34">
     <link rel="stylesheet" href="../assets/css/Controls.css?v=64">
-    <link rel="stylesheet" href="../assets/css/Creation.css?v=27">
+    <link rel="stylesheet" href="../assets/css/Creation.css?v=31">
 
     <script src="../js/script.js?v=7" defer></script>
     <script src="../js/phpfunctions.js?v=17" defer></script>
@@ -73,22 +73,19 @@ if (!empty($selectedName)) {
                 <li class="nav-item">
                     <a href="#" class="nav-link active">
                         <img src="../assets/icons/grid.png" class="dashboard-icon nav-icon">
-                        <span class="nav-icon"></span>
                         Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="../../tournament/html/index.html" class="nav-link">
                         <img src="../assets/icons/trophygray.png" class="tournaments-icon nav-icon">
-                        <span class="nav-icon"></span>
-                        Coming soon 
+                        <p>Coming soon</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <img src="../assets/icons/clock.png" class="clock-icon nav-icon">
-                        <span class="nav-icon"></span>
-                        Coming soon
+                        <p>Coming soon</p>
                     </a>
                 </li>
             </ul>
@@ -96,8 +93,7 @@ if (!empty($selectedName)) {
         <div class="logout">
             <a href="#" class="nav-link">
                 <img src="../assets/icons/logout.png" alt="" class="nav-icon">
-                <span class="nav-icon"></span>
-                Logout
+                <p>Logout</p>
             </a>
         </div>
     </aside>
@@ -304,17 +300,25 @@ if (!empty($selectedName)) {
 
                         <div class="input-section2">
                         <input type="text" class="remove-input" name="add-player" id="add-player" placeholder="Paklicek" require>
-                        <button type="submit" class="preset-confirm-btn remove-button">Add</button>
+                        <button type="submit" class="preset-confirm-btn remove-button">Add player</button>
                         </div>
                     </form>
-                    <form action="removePlayer.php" method="POST">
-                        <label for="remove-player" class="label-rules">Remove a player</label>
+                    <form action="removePreset.php" method="POST">
+                        <label for="remove-tournament" class="label-rules">Remove a preset</label>
 
                         <div class="input-section2">
-                            <input type="text"class="remove-input" name="remove-player" id="remove-player" placeholder="Cakeman" require>
-                            <button type="submit" class="preset-confirm-btn remove-button">Remove</button>
+                            <select name="remove_tournament" class="tournament-selector2" >
+                            <option value="">-- Select Tournament --</option>
+                            <?php foreach ($tournament_options as $value => $display_name): ?>
+                            <option value="<?php echo htmlspecialchars($value); ?>">
+                                <?php echo htmlspecialchars($display_name); ?>
+                            </option>
+                            <?php endforeach; ?>
+                            </select>
+                            <button type="submit" class="preset-confirm-btn remove-button">Remove preset</button>
                         </div>
                     </form>
+
                 </div>
         </div>
     </div>

@@ -71,6 +71,7 @@ main {
 .nav-link {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     gap: 12px;
     padding: 12px 16px;
     color: rgb(148, 163, 184);
@@ -423,8 +424,6 @@ main {
     margin-top: 0.75rem;
 }
 
-
-/* FIX THE DROPDOWN STYLES */
 .form-label {
     display: block;
     color: #ff8732;
@@ -436,7 +435,7 @@ main {
     width: 100%;
     padding: 0.75rem;
     background: #0D1117;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(148, 163, 184, 0.3);
     border-radius: 8px;
     color: #ffffff;
     font-size: 1rem;
