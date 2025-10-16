@@ -5,13 +5,12 @@ if (!isset($_SESSION['winner']) || empty($_SESSION['winner'])) {
     exit;
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-// report_single_player_winner.php
+    
 $API = include __DIR__ . '../../../../config/api.php';
 $apiKey = $API['apiKey'];
-$tournament = 'myTest92521';   // or 'cs-myTest92521' if your tournament is on a subdomain
+$tournament = 'myTest92521';   
 $playerName = $_SESSION['winner'];
 
-// ---- helper: curl wrapper (GET puts fields in querystring, POST/PUT send body) ----
 function callChallonge($method, $url, $fields = []) {
     $method = strtoupper($method);
     if (($method === 'GET' || $method === 'DELETE') && !empty($fields)) {
@@ -52,7 +51,6 @@ function callChallonge($method, $url, $fields = []) {
     return (json_last_error() === JSON_ERROR_NONE) ? $json : $out;
 }
 
-// 1) Resolve player name -> participant ID
 $participants = callChallonge(
     'GET',
     "https://api.challonge.com/v1/tournaments/$tournament/participants.json",
@@ -68,20 +66,16 @@ foreach ($participants as $p) {
 }
 if (!$pid) { throw new RuntimeException("Could not find participant named '{$playerName}'"); }
 
-// 2) List matches that include this participant (use participant_id filter)
 $matches = callChallonge(
     'GET',
     "https://api.challonge.com/v1/tournaments/$tournament/matches.json",
     ['api_key' => $apiKey, 'state' => 'all', 'participant_id' => $pid]
 );
 
-// 3) Pick the first non-completed match containing the player
 $selected = null;
 foreach ($matches as $m) {
     $mm = $m['match'];
-    // skip completed matches
     if (isset($mm['state']) && $mm['state'] === 'complete') continue;
-    // ensure the match actually includes the participant (defensive)
     if ($mm['player1_id'] == $pid || $mm['player2_id'] == $pid) {
         $selected = $mm;
         break;
@@ -89,15 +83,11 @@ foreach ($matches as $m) {
 }
 if (!$selected) { throw new RuntimeException("No non-completed match found for participant ID {$pid}"); }
 
-// 4) Build a scores_csv that reflects which side the player is on
-// Challonge expects "player1-score-player2-score" order per set, so if our player is player2 we invert.
 if ($selected['player1_id'] == $pid) {
-    $scoresCsv = '1-0'; // player1 (our player) wins
+    $scoresCsv = '1-0'; 
 } else {
-    $scoresCsv = '0-1'; // player2 (our player) wins
+    $scoresCsv = '0-1'; 
 }
-
-// 5) Report the result (set winner_id + scores_csv)
 $update = callChallonge(
     'PUT',
     "https://api.challonge.com/v1/tournaments/$tournament/matches/{$selected['id']}.json",

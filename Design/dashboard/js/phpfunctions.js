@@ -3,7 +3,7 @@ document.querySelector('.start').addEventListener('click', function() {
 });
 
 document.querySelector('.removeDB').addEventListener('click', function() {
-    fetchAndUpdate('../API/removeDB.php', { action: 'removeDB' });
+    removeDBHandler('../PHP/removeDB.php', { action: 'removeDB' });
 });
 
 document.querySelector('.matches').addEventListener('click', function() {
@@ -66,6 +66,41 @@ async function fetchAndUpdate(url, data) {
         const resultElement = document.getElementById('result');
         if (resultElement) {
             resultElement.innerHTML = 'An error occurred.';
+        }
+    }
+}
+async function removeDBHandler() {
+    try {
+        const resultElement = document.getElementById('result');
+        if (resultElement) {
+            resultElement.innerHTML = '<p class="success">Processing request...</p>';
+        }
+        
+        const response = await fetch('RemoveDB.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ action: 'removeDB' })
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.text();
+        console.log('RemoveDB Response:', result);
+        
+        if (resultElement) {
+            resultElement.innerHTML = result;
+        }
+        
+        setTimeout(() => {
+            location.reload();
+        }, 2000);
+    } catch (error) {
+        console.error('RemoveDB Error:', error);
+        const resultElement = document.getElementById('result');
+        if (resultElement) {
+            resultElement.innerHTML = '<p class="error">An error occurred: ' + error.message + '</p>';
         }
     }
 }

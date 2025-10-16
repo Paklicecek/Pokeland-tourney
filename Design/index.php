@@ -70,8 +70,9 @@ $rewards = "";
     <link rel="stylesheet" href="./index/assets/main.css?v=22">
     <link rel="stylesheet" href="./index/assets/nav.css?v=4">
     <link rel="stylesheet" href="./index/assets/style.css?v=25">
-    <link rel="stylesheet" href="./index/assets/tournament.css?v=8">
+    <link rel="stylesheet" href="./index/assets/tournament.css?v=10">
     <link rel="stylesheet" href="./index/assets/footer.css?v=67">
+    <link rel="icon" type="image/png" href="./index/icons/Logo.png?v=3">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -143,7 +144,7 @@ $rewards = "";
                     </div>
                 </div>
                 <div class="buttonContainer">
-                    <a class="viewBrackets links" href="">View Brackets</a>
+                    <a class="viewBrackets links" href="./tournament/html/index.html">View Brackets</a>
                     <a class="viewRules links" href="#rules">Tournament Rules</a>
                 </div>
             </div>
@@ -152,17 +153,15 @@ $rewards = "";
             <p class="mainTitle" style="color: white; margin-bottom: 20px;"><strong>Rules & Rewards</strong></p>
             <div class="tournament-container">
                 <div class="tournament-tabs">
-                    <!-- replace with eventlistener -->
                     <button class="tournament-tab active left-tab" onclick="showTournamentTab('tournament-rules')">
-                        <!-- add icon here-->
-                        <span class="tournament-tab-icon ">📋</span>
-                        Rules & Guidelines
+
+                        <img class="tournament-tab-icon special-icon" src="index/icons/Rule.png?v=1" alt="Rules Icon">
+                        <p>Rules & Guidelines</p>
                     </button>
-                    <!-- replace with eventlistener -->
                     <button class="tournament-tab right-tab" onclick="showTournamentTab('tournament-prizes')">
-                        <!-- add icon here-->
-                        <span class="tournament-tab-icon">🏆</span>
-                        Prizes & Rewards
+
+                        <img class="tournament-tab-icon" src="index/icons/TrophyYellow.png" alt="Prize Icon">
+                        <p>Prizes & Rewards</p>
                     </button>
                 </div>
                 
@@ -171,7 +170,6 @@ $rewards = "";
                         <div class="tournament-rules-grid">
                             <div class="tournament-rule-card">
                                 <div class="tournament-rule-header">
-                                    <!-- add icon here -->
                                     <div class="tournament-rule-icon">🛡️</div>
                                     <h3 class="tournament-rule-title">
                                         <?php 
@@ -180,7 +178,6 @@ $rewards = "";
                                     </h3>
                                 </div>
                                 <div class="tournament-rule-item">
-                                    <!-- Get rules from DB -->
                                     <div class="tournament-rule-bullet"></div>
                                     <span>
                                         <?php 
@@ -195,24 +192,21 @@ $rewards = "";
                     <div id="tournament-prizes" class="tournament-tab-content">
                         <div class="tournament-prizes-grid">
                             <div class="tournament-prize-card first">
-                                <!-- add icons here -->
-                                <div class="tournament-prize-icon">👑</div>
+                                <img class="tournament-prize-icon" src="./index/icons/crown.png?v=2" alt="Gold Trophy">
                                 <h3 class="tournament-prize-place">1st Place</h3>
                                 <div class="tournament-prize-package">Prize:</div>
                                 <div class="tournament-prize-description"> 5 event keys + shiny swapper</div>
                             </div>
                             
                             <div class="tournament-prize-card second">
-                                <!-- add icons here -->
-                                <div class="tournament-prize-icon">🥈</div>
+                                <img class="tournament-prize-icon" src="./index/icons/second.png?v=2" alt="Second Palce Trophy">
                                 <h3 class="tournament-prize-place">2nd Place</h3>
                                 <div class="tournament-prize-package">Prize:</div>
                                 <div class="tournament-prize-description">3 event keys</div>
                             </div>
                             
                             <div class="tournament-prize-card third">
-                                <!-- add icons here -->
-                                <div class="tournament-prize-icon">🥉</div>
+                                <img class="tournament-prize-icon" src="./index/icons/third.png" alt="Third Palce Trophy">
                                 <h3 class="tournament-prize-place">3rd Place</h3>
                                 <div class="tournament-prize-package">Prize:</div>
                                 <div class="tournament-prize-description">2 event keys</div>
@@ -231,7 +225,6 @@ $rewards = "";
     </main>
 <footer>
     <div class="footer-content">
-        <!-- Left Section: Brand -->
         <div class="footer-brand">
            <a href="https://pokeland.cz/" class="footer-icon"><img src="./index/icons/Logo.png" alt="Pokeland Logo" style="width: 60px; height: 60px;"></a>
             <div class="footer-brand-text">
@@ -269,14 +262,6 @@ $rewards = "";
                 }, 300); 
             }
         }
-        // explain this code below 
-        // Smooth scrolling for internal links
-        // What does that mean?
-        // It means that when you click on a link that points to a section within the same page (like #info or #rules),
-        // the page will scroll smoothly to that section instead of jumping abruptly.
-        // This enhances user experience by providing a visually appealing transition.
-        // The code selects all anchor tags with href attributes that start with '#'
-        // and adds a click event listener to each of them.
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -290,25 +275,25 @@ $rewards = "";
             });
         });
         createParticles();
-        function showTournamentTab(tabName) {
-    // Hide all tab contents
-    const tabContents = document.querySelectorAll('.tournament-tab-content');
-    tabContents.forEach(content => {
-        content.classList.remove('active');
-    });
-    
-    // Remove active class from all tabs
-    const tabs = document.querySelectorAll('.tournament-tab');
-    tabs.forEach(tab => {
-        tab.classList.remove('active');
-    });
-    
-    // Show selected tab content
-    document.getElementById(tabName).classList.add('active');
-    
-    // Add active class to clicked tab
-    event.target.classList.add('active');
-}
+            function showTournamentTab(tabName) {
+
+        const tabContents = document.querySelectorAll('.tournament-tab-content');
+        tabContents.forEach(content => {
+            content.classList.remove('active');
+        });
+        
+
+        const tabs = document.querySelectorAll('.tournament-tab');
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+
+        document.getElementById(tabName).classList.add('active');
+        
+
+        event.target.classList.add('active');
+        }
     </script>
 </body>
 </html>

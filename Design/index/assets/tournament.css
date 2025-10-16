@@ -53,11 +53,14 @@
 }
 /* replace this with img */
 .tournament-tab-icon {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+    padding: 0;
 }
-
+.special-icon{
+    filter: brightness(0) invert(1);
+}
 .tournament-content {
     padding: 1.5rem;
 }

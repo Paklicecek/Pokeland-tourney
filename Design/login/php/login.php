@@ -68,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel Login</title>
     <link rel="stylesheet" href="./../assets/css/login.css?v=14">
+    <link rel="icon" type="image/png" href="../../index/icons/Logo.png?v=3">
 </head>
 <body>
     <div class="particles" id="particles"></div>

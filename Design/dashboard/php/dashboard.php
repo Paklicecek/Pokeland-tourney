@@ -54,9 +54,10 @@ if (!empty($selectedName)) {
     <link rel="stylesheet" href="../assets/css/dashboard.css?v=34">
     <link rel="stylesheet" href="../assets/css/Controls.css?v=64">
     <link rel="stylesheet" href="../assets/css/Creation.css?v=31">
+    <link rel="icon" type="image/png" href="../../index/icons/Logo.png?v=3">
 
     <script src="../js/script.js?v=7" defer></script>
-    <script src="../js/phpfunctions.js?v=17" defer></script>
+    <script src="../js/phpfunctions.js?v=29" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -215,7 +216,7 @@ if (!empty($selectedName)) {
                 <!-- Player Selector -->
                 <form method="GET" action="dashboard.php">
                     <div class="preset-card">
-                        <h2 class="card-title">Player Selection</h2>
+                        <h2 class="card-title">Match winner selection</h2>
                         <div class="preset-controls">
                             <div class="custom-select">
                                 <div class="form-group">
@@ -308,17 +309,35 @@ if (!empty($selectedName)) {
 
                         <div class="input-section2">
                             <select name="remove_tournament" class="tournament-selector2" >
-                            <option value="">-- Select Tournament --</option>
-                            <?php foreach ($tournament_options as $value => $display_name): ?>
-                            <option value="<?php echo htmlspecialchars($value); ?>">
-                                <?php echo htmlspecialchars($display_name); ?>
-                            </option>
-                            <?php endforeach; ?>
+                                <option value="">-- Select Tournament --</option>
+                                <?php foreach ($tournament_options as $value => $display_name): ?>
+                                    <option value="<?php echo htmlspecialchars($value); ?>">
+                                        <?php echo htmlspecialchars($display_name); ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                             <button type="submit" class="preset-confirm-btn remove-button">Remove preset</button>
                         </div>
                     </form>
+                    <form action="removePlayer.php" method="POST">
+                        <label for="remove-player" class="label-rules">Remove a player</label>
 
+                        <div class="input-section2">
+                            <select name="remove_player" class="tournament-selector2" id="remove-player">
+                                <option value="">-- Select Player --</option>
+                                <?php if (!empty($names) && is_array($names)): ?>
+                                    <?php foreach ($names as $name): ?>
+                                        <option value="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>">
+                                            <?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <option value="" disabled>No players available</option>
+                                <?php endif; ?>
+                            </select>
+                            <button type="submit" class="preset-confirm-btn remove-button">Remove player</button>
+                        </div>
+                    </form>
                 </div>
         </div>
     </div>
