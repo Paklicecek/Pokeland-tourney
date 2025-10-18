@@ -62,11 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel Login</title>
+    <title>Dashboard Login</title>
     <link rel="stylesheet" href="./../assets/css/login.css?v=19">
     <link rel="icon" type="image/png" href="../../index/icons/Logo.png?v=3">
 </head>
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="container">
             <h1>Dashboard Login</h1>
-            <p class="subtitle">Welcome back! Please sign in to your account.</p>
+            <p class="subtitle">Vítej zpět! Prosím přihlaš se ke svému účtu.</p>
             <?php 
                 if(!$correct){
                     echo '<p class="error subtitle">' . $error . '</p>';
@@ -88,17 +88,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <form action="./login.php" method="POST">
             <div class="form-group">
-                <label for="user">Username</label>
+                <label for="user">Uživatelské jméno</label>
                 <input type="text" id="user" name="username" placeholder="Enter your username" required>
             </div>
             
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Heslo</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
             
-            <button type="submit" class="login-btn">Sign in</button>
-            <a href="../../index.php" class="Go-back"><- Go back</a>
+            <button type="submit" class="login-btn">Přihlásit se</button>
+            <a href="../../index.php" class="Go-back"><- Jít zpátky</a>
         </form>
     </div>
 

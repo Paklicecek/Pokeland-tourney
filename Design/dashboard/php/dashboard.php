@@ -38,6 +38,12 @@ $_SESSION['Names'] = $names;
 
 include 'selector.php';
 
+if (isset($_SESSION['preset_updated'])) {
+    unset($_SESSION['preset_updated']);
+    header('Location: dashboard.php');
+    exit();
+}
+
 $selectedName = isset($_GET['winner']) ? $_GET['winner'] : '';
 if (!empty($selectedName)) {
     $_SESSION['winner'] = $selectedName;
@@ -51,7 +57,7 @@ if (!empty($selectedName)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/dashboard.css?v=38">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?v=39">
     <link rel="stylesheet" href="../assets/css/Controls.css?v=64">
     <link rel="stylesheet" href="../assets/css/Creation.css?v=31">
     <link rel="icon" type="image/png" href="../../index/icons/Logo.png?v=3">
@@ -285,7 +291,7 @@ if (!empty($selectedName)) {
                     <input type="text" class="input title" name="title" id="title" placeholder="Singles unlimited..." require>
         
                     <label for="rules" class="label-rules">Rules</label>
-                    <input type="text"class="input rules" name="rules" id="rules" placeholder="Povolena 1 legenda/ultrabeast/paradox..." require>
+                    <textarea class="input rules" name="rules" id="rules" rows="1" placeholder="Povolena 1 legenda/ultrabeast/paradox..." required></textarea>
         
                     <label for="rewards" class="label-rewards">Rewards</label>
                     <input type="text" class="input rewards" name="rewards" id="rewards" placeholder="1. 5 event klíčů navíc..." require>

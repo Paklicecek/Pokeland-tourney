@@ -105,10 +105,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_tournament'
 
         $conn->close();
     }
-    //CALL TO PRESET ON API SIDE
-    include "../API/Preset.php";
+
     $_SESSION['Response'] = true;
-    
+    $_SESSION['preset_updated'] = true;  
+
 }
 else {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

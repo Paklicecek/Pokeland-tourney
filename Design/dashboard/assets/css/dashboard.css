@@ -404,3 +404,17 @@ main {
     margin-bottom: 1rem;
     font-weight: 600;
 }
+textarea.input.rules {
+    resize: vertical;
+    height: 38px;
+    min-height: 38px;
+    max-height: 38px;
+    overflow: auto;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    box-sizing: border-box;
+    line-height: 1;
+    margin: 0;
+    vertical-align: top;
+    display: block;
+}

@@ -62,16 +62,16 @@ $rewards = "";
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokeland Tourneys</title>
-    <link rel="stylesheet" href="./index/assets/main.css?v=22">
+    <title>Pokeland Turnaje</title>
+    <link rel="stylesheet" href="./index/assets/main.css?v=23">
     <link rel="stylesheet" href="./index/assets/nav.css?v=4">
     <link rel="stylesheet" href="./index/assets/style.css?v=25">
     <link rel="stylesheet" href="./index/assets/tournament.css?v=12">
-    <link rel="stylesheet" href="./index/assets/footer.css?v=67">
+    <link rel="stylesheet" href="./index/assets/footer.css?v=68">
     <link rel="icon" type="image/png" href="./index/icons/Logo.png?v=3">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,13 +87,13 @@ $rewards = "";
                 <a href=""><img src="./index/icons/Logo.png" alt="logo" class="logo"></a>
                 <div class="group">
                     <a href="#info" class="title-pokeland title">Pokeland</a>
-                    <a href="#info" class="title-pokeland hub">Tournament Hub</a>
+                    <a href="#info" class="title-pokeland hub">Turnajový Web</a>
                 </div>
             </div>
             <div class="nav">
-                <a href="#info" class="tournament">Tournament</a>
-                <a href="tournament/html/index.html" class="brackets">Brackets</a>
-                <a href="#rules" class="rules">Rules</a>
+                <a href="#info" class="tournament">Turnaje</a>
+                <a href="tournament/html/index.html" class="brackets">Pavouk</a>
+                <a href="#rules" class="rules">Pravidla</a>
             </div>
             <a class="button" href="./login/php/login.php">Admin Login</a>        
         </div>
@@ -101,12 +101,12 @@ $rewards = "";
     <main>
         <section id="info" class="sec-info">
             <div class="container">
-                <p class="mainTitle"><strong>Pokeland Tournaments</strong></p>
-                <p class="slug">Join the ultimate Pokemon competitive scene. Battle, compete,<br> and get free rewards!</p>
+                <p class="mainTitle"><strong>Pokeland Turnaje</strong></p>
+                <p class="slug">Připoj se na Pokeland a zahraj si ultimátní turnaje, kde<br>můžeš získat skvělé odměny!</p>
                 <div class="card">
                     <div class="currentTournament">
                         <img src="index/icons/TrophyYellow.png" alt="" class="trophyYellow">
-                        <p class="current">Current Tournament</p>
+                        <p class="current">Další turnaj</p>
                     </div>
                     <p class="currentTitle">
                         <?php 
@@ -115,53 +115,67 @@ $rewards = "";
                     </p>
                     <div class="dateContainer">
                         <p class="date"><img src="./index/icons/Date.png" alt="" class="img">
-                        <?php
-                            date_default_timezone_set('Europe/Prague'); 
+                            <?php
+                                date_default_timezone_set('Europe/Prague'); 
 
-                            $now = new DateTime();
+                                $now = new DateTime();
 
-                            $days = ['Thursday', 'Sunday'];
-                            $nextTournament = null;
+                                $days = ['Thursday', 'Sunday'];
+                                $nextTournament = null;
 
-                            foreach ($days as $day) {
-                                $candidate = new DateTime("next $day 19:00");
-                                if ($now->format('l') === $day && $now < new DateTime("today 19:00")) {
-                                    $candidate = new DateTime("today 19:00");
+                                foreach ($days as $day) {
+                                    $candidate = new DateTime("next $day 19:00");
+                                    if ($now->format('l') === $day && $now < new DateTime("today 19:00")) {
+                                        $candidate = new DateTime("today 19:00");
+                                    }
+                                    if ($nextTournament === null || $candidate < $nextTournament) {
+                                        $nextTournament = $candidate;
+                                    }
                                 }
-                                if ($nextTournament === null || $candidate < $nextTournament) {
-                                    $nextTournament = $candidate;
-                                }
-                            }
-                            echo $nextTournament->format('l, d.m H:i');
-                        ?>
+                                
+                                $czechDays = [
+                                    'Monday' => 'Pondělí',
+                                    'Tuesday' => 'Úterý',
+                                    'Wednesday' => 'Středa',
+                                    'Thursday' => 'Čtvrtek',
+                                    'Friday' => 'Pátek',
+                                    'Saturday' => 'Sobota',
+                                    'Sunday' => 'Neděle'
+                                ];
+                                
+                                $englishDay = $nextTournament->format('l');
+                                $czechDay = $czechDays[$englishDay];
+                                
+                                echo $czechDay . $nextTournament->format(', d.m H:i');
+                            ?>
                         </p>
                         <p class="players"><img src="./index/icons/Bolt.png" alt="" class="img"> 
                             <?php
                                 echo count($names);
                             ?>
-                            Players
+                            Hráčů
                         </p>
                     </div>
                 </div>
                 <div class="buttonContainer">
-                    <a class="viewBrackets links" href="./tournament/html/index.html">View Brackets</a>
-                    <a class="viewRules links" href="#rules">Tournament Rules</a>
+                    <a class="viewBrackets links" href="./tournament/html/index.html">Koukni na pavouka</a>
+                    <a class="viewRules links" href="#rules">Turnajové pravidla</a>
                 </div>
             </div>
         </section>
         <section id="rules" class="sec-rules" style="display: flex; align-items: center; flex-direction: column;">
-            <p class="mainTitle" style="color: white; margin-bottom: 20px;"><strong>Rules & Rewards</strong></p>
+            <p class="mainTitle" style="color: white; margin-bottom: 20px;"><strong>Pravidla & Odměny</strong></p>
             <div class="tournament-container">
                 <div class="tournament-tabs">
                     <button class="tournament-tab active left-tab" onclick="showTournamentTab('tournament-rules')">
 
                         <img class="tournament-tab-icon special-icon" src="index/icons/Rule.png?v=1" alt="Rules Icon">
-                        <p>Rules & Guidelines</p>
+                        <p>Pravidla</p>
                     </button>
                     <button class="tournament-tab right-tab" onclick="showTournamentTab('tournament-prizes')">
 
                         <img class="tournament-tab-icon" src="index/icons/TrophyYellow.png" alt="Prize Icon">
-                        <p>Prizes & Rewards</p>
+                        <p>Odměny</p>
                     </button>
                 </div>
                 
@@ -193,30 +207,29 @@ $rewards = "";
                         <div class="tournament-prizes-grid">
                             <div class="tournament-prize-card first">
                                 <img class="tournament-prize-icon" src="./index/icons/crown.png?v=3" alt="Gold Trophy">
-                                <h3 class="tournament-prize-place">1st Place</h3>
-                                <div class="tournament-prize-package">Prize:</div>
-                                <div class="tournament-prize-description"> 5 event keys</div>
+                                <h3 class="tournament-prize-place">První místo</h3>
+                                <div class="tournament-prize-package">Cena:</div>
+                                <div class="tournament-prize-description"> 5 event klíčů</div>
                             </div>
                             
                             <div class="tournament-prize-card second">
                                 <img class="tournament-prize-icon" src="./index/icons/second.png?v=3" alt="Second Palce Trophy">
-                                <h3 class="tournament-prize-place">2nd Place</h3>
-                                <div class="tournament-prize-package">Prize:</div>
-                                <div class="tournament-prize-description">3 event keys</div>
+                                <h3 class="tournament-prize-place">Druhé místo</h3>
+                                <div class="tournament-prize-package">Cena:</div>
+                                <div class="tournament-prize-description">3 event klíče</div>
                             </div>
                             
                             <div class="tournament-prize-card third">
                                 <img class="tournament-prize-icon" src="./index/icons/third.png?v=3" alt="Third Palce Trophy">
-                                <h3 class="tournament-prize-place">3rd Place</h3>
-                                <div class="tournament-prize-package">Prize:</div>
-                                <div class="tournament-prize-description">2 event keys</div>
+                                <h3 class="tournament-prize-place">Třetí místo</h3>
+                                <div class="tournament-prize-package">Cena:</div>
+                                <div class="tournament-prize-description">2 event klíče</div>
                             </div>
                         </div>
                         
                         <div class="tournament-total-prize">
-                            <h3>Reward for participants</h3>
-                            <div class="tournament-total-amount">1 event key</div>
-                            <div class="tournament-total-subtitle"></div>
+                            <h3>Odměna za účast</h3>
+                            <div class="tournament-total-amount">1 event klíč</div>
                         </div>
                     </div>
                 </div>
@@ -229,7 +242,7 @@ $rewards = "";
            <a href="https://pokeland.cz/" class="footer-icon"><img src="./index/icons/Logo.png" alt="Pokeland Logo" style="width: 60px; height: 60px;"></a>
             <div class="footer-brand-text">
                 <a class="footer-brand-name" href="https://pokeland.cz/">Pokeland.cz</a>
-                <a href="https://pokeland.cz/" class="footer-brand-subtitle">Pokemon Server</a>
+                <a href="https://pokeland.cz/" class="footer-brand-subtitle">Pokemoní Server</a>
             </div>
         </div>
 
@@ -242,8 +255,8 @@ $rewards = "";
         </div>
 
         <div class="footer-links">
-            <a href="#rules">Rules</a>
-            <a href="https://store.rajce.pro/categories/Pokeland/klice">Store</a>
+            <a href="#rules">Pravidla</a>
+            <a href="https://store.rajce.pro/categories/Pokeland/klice">Obchod</a>
         </div>
     </div>
 </footer>
