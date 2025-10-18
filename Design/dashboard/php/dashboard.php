@@ -51,12 +51,12 @@ if (!empty($selectedName)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/dashboard.css?v=34">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?v=38">
     <link rel="stylesheet" href="../assets/css/Controls.css?v=64">
     <link rel="stylesheet" href="../assets/css/Creation.css?v=31">
     <link rel="icon" type="image/png" href="../../index/icons/Logo.png?v=3">
 
-    <script src="../js/script.js?v=7" defer></script>
+    <script src="../js/script.js?v=8" defer></script>
     <script src="../js/phpfunctions.js?v=29" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,13 +74,13 @@ if (!empty($selectedName)) {
                 <li class="nav-item">
                     <a href="#" class="nav-link active">
                         <img src="../assets/icons/grid.png" class="dashboard-icon nav-icon">
-                        Dashboard
+                        <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="../../tournament/html/index.html" class="nav-link">
                         <img src="../assets/icons/trophygray.png" class="tournaments-icon nav-icon">
-                        <p>Coming soon</p>
+                        <p>Tournament</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -92,7 +92,7 @@ if (!empty($selectedName)) {
             </ul>
         </nav>
         <div class="logout">
-            <a href="#" class="nav-link">
+            <a href="logout.php" class="nav-link">
                 <img src="../assets/icons/logout.png" alt="" class="nav-icon">
                 <p>Logout</p>
             </a>

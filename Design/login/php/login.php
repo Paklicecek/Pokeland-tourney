@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel Login</title>
-    <link rel="stylesheet" href="./../assets/css/login.css?v=14">
+    <link rel="stylesheet" href="./../assets/css/login.css?v=19">
     <link rel="icon" type="image/png" href="../../index/icons/Logo.png?v=3">
 </head>
 <body>
@@ -98,6 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             
             <button type="submit" class="login-btn">Sign in</button>
+            <a href="../../index.php" class="Go-back"><- Go back</a>
         </form>
     </div>
 

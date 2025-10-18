@@ -70,7 +70,7 @@ $rewards = "";
     <link rel="stylesheet" href="./index/assets/main.css?v=22">
     <link rel="stylesheet" href="./index/assets/nav.css?v=4">
     <link rel="stylesheet" href="./index/assets/style.css?v=25">
-    <link rel="stylesheet" href="./index/assets/tournament.css?v=10">
+    <link rel="stylesheet" href="./index/assets/tournament.css?v=12">
     <link rel="stylesheet" href="./index/assets/footer.css?v=67">
     <link rel="icon" type="image/png" href="./index/icons/Logo.png?v=3">
 
@@ -115,25 +115,25 @@ $rewards = "";
                     </p>
                     <div class="dateContainer">
                         <p class="date"><img src="./index/icons/Date.png" alt="" class="img">
-                                            <?php
-                    date_default_timezone_set('Europe/Prague'); 
+                        <?php
+                            date_default_timezone_set('Europe/Prague'); 
 
-                    $now = new DateTime();
+                            $now = new DateTime();
 
-                    $days = ['Thursday', 'Sunday'];
-                    $nextTournament = null;
+                            $days = ['Thursday', 'Sunday'];
+                            $nextTournament = null;
 
-                    foreach ($days as $day) {
-                        $candidate = new DateTime("next $day 19:00");
-                        if ($now->format('l') === $day && $now < new DateTime("today 19:00")) {
-                            $candidate = new DateTime("today 19:00");
-                        }
-                        if ($nextTournament === null || $candidate < $nextTournament) {
-                            $nextTournament = $candidate;
-                        }
-                    }
-                    echo $nextTournament->format('l, d.m H:i');
-                    ?>
+                            foreach ($days as $day) {
+                                $candidate = new DateTime("next $day 19:00");
+                                if ($now->format('l') === $day && $now < new DateTime("today 19:00")) {
+                                    $candidate = new DateTime("today 19:00");
+                                }
+                                if ($nextTournament === null || $candidate < $nextTournament) {
+                                    $nextTournament = $candidate;
+                                }
+                            }
+                            echo $nextTournament->format('l, d.m H:i');
+                        ?>
                         </p>
                         <p class="players"><img src="./index/icons/Bolt.png" alt="" class="img"> 
                             <?php
@@ -192,21 +192,21 @@ $rewards = "";
                     <div id="tournament-prizes" class="tournament-tab-content">
                         <div class="tournament-prizes-grid">
                             <div class="tournament-prize-card first">
-                                <img class="tournament-prize-icon" src="./index/icons/crown.png?v=2" alt="Gold Trophy">
+                                <img class="tournament-prize-icon" src="./index/icons/crown.png?v=3" alt="Gold Trophy">
                                 <h3 class="tournament-prize-place">1st Place</h3>
                                 <div class="tournament-prize-package">Prize:</div>
-                                <div class="tournament-prize-description"> 5 event keys + shiny swapper</div>
+                                <div class="tournament-prize-description"> 5 event keys</div>
                             </div>
                             
                             <div class="tournament-prize-card second">
-                                <img class="tournament-prize-icon" src="./index/icons/second.png?v=2" alt="Second Palce Trophy">
+                                <img class="tournament-prize-icon" src="./index/icons/second.png?v=3" alt="Second Palce Trophy">
                                 <h3 class="tournament-prize-place">2nd Place</h3>
                                 <div class="tournament-prize-package">Prize:</div>
                                 <div class="tournament-prize-description">3 event keys</div>
                             </div>
                             
                             <div class="tournament-prize-card third">
-                                <img class="tournament-prize-icon" src="./index/icons/third.png" alt="Third Palce Trophy">
+                                <img class="tournament-prize-icon" src="./index/icons/third.png?v=3" alt="Third Palce Trophy">
                                 <h3 class="tournament-prize-place">3rd Place</h3>
                                 <div class="tournament-prize-package">Prize:</div>
                                 <div class="tournament-prize-description">2 event keys</div>
@@ -275,25 +275,28 @@ $rewards = "";
             });
         });
         createParticles();
-            function showTournamentTab(tabName) {
 
+    function showTournamentTab(tabName) {
         const tabContents = document.querySelectorAll('.tournament-tab-content');
         tabContents.forEach(content => {
             content.classList.remove('active');
         });
         
-
         const tabs = document.querySelectorAll('.tournament-tab');
         tabs.forEach(tab => {
             tab.classList.remove('active');
         });
         
-
         document.getElementById(tabName).classList.add('active');
         
-
-        event.target.classList.add('active');
+        const clickedButton = tabName === 'tournament-rules' 
+            ? document.querySelector('.left-tab')
+            : document.querySelector('.right-tab');
+        
+        if (clickedButton) {
+            clickedButton.classList.add('active');
         }
+    }
     </script>
 </body>
 </html>

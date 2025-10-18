@@ -139,7 +139,6 @@
     margin-top: 8px;
 }
 
-/* Tournament Prizes Section */
 .tournament-prizes-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -193,7 +192,6 @@
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
-/* replace with real icon later */
 .tournament-prize-icon {
     width: 60px;
     height: 60px;
@@ -204,17 +202,16 @@
     border-radius: 50%;
     font-size: 30px;
 }
-/* if icon looks bad with ts remove */
 .first .tournament-prize-icon {
-    background: linear-gradient(135deg, #FFD700, #FFA000);
+    border: 2px solid #FFD700;
 }
 
 .second .tournament-prize-icon {
-    background: linear-gradient(135deg, #C0C0C0, #909090);
+    border: 2px solid #C0C0C0;
 }
 
 .third .tournament-prize-icon {
-    background: linear-gradient(135deg, #CD7F32, #A0522D);
+    border: 2px solid #CD7F32;
 }
 
 .tournament-prize-place {

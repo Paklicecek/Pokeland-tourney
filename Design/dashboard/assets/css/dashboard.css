@@ -119,7 +119,9 @@ main {
     padding: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-
+.nav-link{
+    z-index: 10000;
+}
 .logout .nav-link {
     color: gray;
 }
@@ -253,54 +255,6 @@ main {
 
 .select-btn.active .dropdown-arrow {
     transform: rotate(180deg);
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--secondary-color);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    margin-top: 4px;
-    padding: 8px;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-.dropdown-menu.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.dropdown-option {
-    padding: 10px 12px;
-    color: #94a3b8;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.dropdown-option:hover {
-    background: rgba(99, 102, 241, 0.1);
-    color: var(--text-light);
-}
-
-.dropdown-option.selected {
-    background: var(--primary-color);
-    color: var(--text-light);
 }
 
 .preset-confirm-btn {
