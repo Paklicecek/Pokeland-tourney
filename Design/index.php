@@ -68,7 +68,7 @@ $rewards = "";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokeland Turnaje</title>
     <link rel="stylesheet" href="./index/assets/main.css?v=23">
-    <link rel="stylesheet" href="./index/assets/nav.css?v=4">
+    <link rel="stylesheet" href="./index/assets/nav.css?v=6">
     <link rel="stylesheet" href="./index/assets/style.css?v=25">
     <link rel="stylesheet" href="./index/assets/tournament.css?v=12">
     <link rel="stylesheet" href="./index/assets/footer.css?v=68">
@@ -94,6 +94,7 @@ $rewards = "";
                 <a href="#info" class="tournament">Turnaje</a>
                 <a href="tournament/html/index.html" class="brackets">Pavouk</a>
                 <a href="#rules" class="rules">Pravidla</a>
+                <a href="https://navody.pokeland.cz/cs/cobblemon/turnaje" class="breakdown">Rozpis</a>
             </div>
             <a class="button" href="./login/php/login.php">Admin Login</a>        
         </div>
@@ -102,7 +103,7 @@ $rewards = "";
         <section id="info" class="sec-info">
             <div class="container">
                 <p class="mainTitle"><strong>Pokeland Turnaje</strong></p>
-                <p class="slug">Připoj se na Pokeland a zahraj si ultimátní turnaje, kde<br>můžeš získat skvělé odměny!</p>
+                <p class="slug">Připoj se k hráčům na Pokelandu a užij si nezapomenutelné<br>turnaje plné skvělých odměn!</p>
                 <div class="card">
                     <div class="currentTournament">
                         <img src="index/icons/TrophyYellow.png" alt="" class="trophyYellow">
@@ -159,7 +160,7 @@ $rewards = "";
                 </div>
                 <div class="buttonContainer">
                     <a class="viewBrackets links" href="./tournament/html/index.html">Koukni na pavouka</a>
-                    <a class="viewRules links" href="#rules">Turnajové pravidla</a>
+                    <a class="viewRules links" href="#rules">Pravidla turnaje</a>
                 </div>
             </div>
         </section>

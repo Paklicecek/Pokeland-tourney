@@ -40,7 +40,10 @@
 .tournament{
     background-image: url('../icons/Trophy.png');
 }
-.rules, .brackets, .tournament {
+.breakdown{
+    background-image: url('../icons/Calendar.png?v=1');
+}
+.rules, .brackets, .tournament, .breakdown {
     position: relative;
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
@@ -52,7 +55,7 @@
     background-position: 0.8em center; 
     background-size: 1em;
 }
-.rules::before, .brackets::before, .tournament::before {
+.rules::before, .brackets::before, .tournament::before, .breakdown::before {
     content: '';
     position: absolute;
     top: 0;
@@ -63,11 +66,11 @@
     transition: left 0.3s ease;
     z-index: 1;
 }
-.rules:hover::before, .brackets:hover::before, .tournament:hover::before {
+.rules:hover::before, .brackets:hover::before, .tournament:hover::before, .breakdown:hover::before {
     left: 100%;
     cursor: pointer;
 }
-.rules::after, .brackets::after, .tournament::after {
+.rules::after, .brackets::after, .tournament::after, .breakdown:after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -78,10 +81,10 @@
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
-.rules:hover::after, .brackets:hover::after, .tournament:hover::after {
+.rules:hover::after, .brackets:hover::after, .tournament:hover::after, .breakdown:hover:after {
     width: 100%;
 }
-.rules:hover, .brackets:hover, .tournament:hover {
+.rules:hover, .brackets:hover, .tournament:hover, .breakdown:hover {
     transform: translateY(-1px);
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
