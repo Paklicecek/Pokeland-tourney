@@ -1,0 +1,11 @@
+# Turn on rewrites
+RewriteEngine On
+
+# 1) Redirect /index.php -> /
+RewriteCond %{THE_REQUEST} \s/+index\.php[?\s] [NC]
+RewriteRule ^index\.php$ / [R=301,L]
+
+# 2+3) Force HTTPS and non-www host (canonical)
+RewriteCond %{HTTP_HOST} ^www\.turnaje\.fun$ [NC,OR]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://turnaje.fun%{REQUEST_URI} [R=301,L]

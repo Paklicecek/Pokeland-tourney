@@ -62,24 +62,45 @@ $rewards = "";
 
 ?>
 <!DOCTYPE html>
-<html lang="cz">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokeland Turnaje</title>
+    <title>Pokeland - Turnaje Cobblemon | <?= htmlspecialchars($title ?? "Aktuální turnaj") ?> </title>
+
+    <link rel="icon" type="image/png" href="/index/icons/Logo.png" sizes="48x48">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Description -->
+    <meta name="description" content="Oficiální Pokeland web na hostování turnajů." />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://turnaje.fun/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pokeland - Turnaje Cobblemon" />
+    <meta property="og:description" content="Oficiální Pokeland web na hostování turnajů." />
+    <meta property="og:url" content="https://turnaje.fun/" />
+    <meta property="og:image" content="https://turnaje.fun/index/icons/pokeland-turnaje.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pokeland - Turnaje Cobblemon" />
+    <meta name="twitter:description" content="Oficiální Pokeland web na hostování turnajů." />
+    <meta name="twitter:image" content="https://turnaje.fun/index/icons/pokeland-turnaje.png" />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="./index/assets/main.css?v=23">
     <link rel="stylesheet" href="./index/assets/nav.css?v=6">
     <link rel="stylesheet" href="./index/assets/style.css?v=25">
     <link rel="stylesheet" href="./index/assets/tournament.css?v=12">
     <link rel="stylesheet" href="./index/assets/footer.css?v=68">
-    <link rel="icon" type="image/png" href="./index/icons/Logo.png?v=3">
-
     <link rel="stylesheet" href="./index/assets/tooltip.css?v=24">
     <script src="./index/js/tooltip.js?v=2" defer></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
 <body>
