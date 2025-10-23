@@ -89,7 +89,9 @@ header {
         .hub:hover {
             color: white;
         }
-
+        .breakdown {
+            background-image: url('../../index/icons/Calendar.png');
+        }
         .rules {
             background-image: url('../../index/icons/Rule.png');
         }
@@ -102,7 +104,7 @@ header {
             background-image: url('../../index/icons/Trophy.png');
         }
 
-        .rules, .brackets, .tournament {
+        .rules, .brackets, .tournament, .breakdown{
             position: relative;
             padding: 0.8rem 1.5rem;
             border-radius: 8px;
@@ -117,7 +119,7 @@ header {
             text-decoration: none;
         }
 
-        .rules::before, .brackets::before, .tournament::before {
+        .rules::before, .brackets::before, .tournament::before , .breakdown::before {
             content: '';
             position: absolute;
             top: 0;
@@ -129,12 +131,12 @@ header {
             z-index: 1;
         }
 
-        .rules:hover::before, .brackets:hover::before, .tournament:hover::before {
+        .rules:hover::before, .brackets:hover::before, .tournament:hover::before , .breakdown:hover::before {
             left: 100%;
             cursor: pointer;
         }
 
-        .rules::after, .brackets::after, .tournament::after {
+        .rules::after, .brackets::after, .tournament::after , .breakdown::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -146,11 +148,11 @@ header {
             transform: translateX(-50%);
         }
 
-        .rules:hover::after, .brackets:hover::after, .tournament:hover::after {
+        .rules:hover::after, .brackets:hover::after, .tournament:hover::after , .breakdown:hover::after {
             width: 100%;
         }
 
-        .rules:hover, .brackets:hover, .tournament:hover {
+        .rules:hover, .brackets:hover, .tournament:hover , .breakdown:hover {
             transform: translateY(-1px);
             background-color: rgba(255, 255, 255, 0.1);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);

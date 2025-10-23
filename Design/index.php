@@ -74,6 +74,9 @@ $rewards = "";
     <link rel="stylesheet" href="./index/assets/footer.css?v=68">
     <link rel="icon" type="image/png" href="./index/icons/Logo.png?v=3">
 
+    <link rel="stylesheet" href="./index/assets/tooltip.css?v=24">
+    <script src="./index/js/tooltip.js?v=2" defer></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -150,11 +153,46 @@ $rewards = "";
                                 echo $czechDay . $nextTournament->format(', d.m H:i');
                             ?>
                         </p>
-                        <p class="players"><img src="./index/icons/Bolt.png" alt="" class="img"> 
+                        <p class="players">
+                            <img src="./index/icons/Bolt.png" alt="" class="img"> 
                             <?php
                                 echo count($names);
+                                if(count($names) == 0){
+                                    echo " Hráčů";
+                                }
+                                else if(count($names) == 1){
+                                    echo " Hráč";
+                                }
+                                else if(count($names) > 1 && count($names) <= 4){
+                                    echo " Hráči";
+                                }
+                                else{
+                                    echo " Hráčů";
+                                }
                             ?>
-                            Hráčů
+                            <span class="tooltip-container">
+                                    <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    width="1.2em"
+                                    height="1.2em"
+                                    fill="#8C8B8C"
+                                    >
+                                        <path
+                                            d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22c-5.518 0-10-4.482-10-10s4.482-10 10-10 10 4.482 10 10-4.482 10-10 10zm-1-16h2v6h-2zm0 8h2v2h-2z"
+                                        >
+                                        </path>
+                                    </svg>
+                                    <span class="tooltip">
+                                        Přihlášení hráči:
+                                        <br>
+                                        <?php
+                                        foreach($names as $name){
+                                            echo "$name <br>"; 
+                                        }
+                                        ?>
+                                    </span>
+                            </span>
                         </p>
                     </div>
                 </div>

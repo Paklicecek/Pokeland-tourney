@@ -52,7 +52,6 @@
     gap: 2rem;
     padding: 1rem 0 0 0;
     color: rgb(161, 161, 161);
-    /* This makes the cool line */
     border-top: 1px solid rgba(255, 255, 255, 0.1); 
     width: 100%;
     justify-content: center;
