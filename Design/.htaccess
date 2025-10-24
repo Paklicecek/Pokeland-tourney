@@ -15,6 +15,9 @@ RewriteRule ^index\.php$ / [R=301,L]
 #    NOTE: no leading slash in the substitution in .htaccess
 RewriteRule ^pavouk/?$ tournament/html/index.html [L]
 
+# Don't rewrite these special files
+RewriteRule ^(sitemap\.xml|sitemap_main\.xml|robots\.txt)$ - [L]
+
 # 4) Canonicalize file/folder -> /pavouk (EXTERNAL redirect, guarded by THE_REQUEST)
 RewriteCond %{THE_REQUEST} \s/+tournament/html/index\.html[?\s] [NC]
 RewriteRule ^tournament/html/index\.html$ /pavouk [R=301,L]
