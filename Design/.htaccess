@@ -1,11 +1,23 @@
-# Turn on rewrites
+# Enable rewriting
 RewriteEngine On
+RewriteBase /
 
-# 1) Redirect /index.php -> /
-RewriteCond %{THE_REQUEST} \s/+index\.php[?\s] [NC]
-RewriteRule ^index\.php$ / [R=301,L]
-
-# 2+3) Force HTTPS and non-www host (canonical)
+# 1) Force HTTPS + non-www (canonical host)
 RewriteCond %{HTTP_HOST} ^www\.turnaje\.fun$ [NC,OR]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://turnaje.fun%{REQUEST_URI} [R=301,L]
+
+# 2) /index.php -> /
+RewriteCond %{THE_REQUEST} \s/+index\.php[?\s] [NC]
+RewriteRule ^index\.php$ / [R=301,L]
+
+# 3) Pretty URL: /pavouk  -> serve tournament/html/index.html (INTERNAL rewrite)
+#    NOTE: no leading slash in the substitution in .htaccess
+RewriteRule ^pavouk/?$ tournament/html/index.html [L]
+
+# 4) Canonicalize file/folder -> /pavouk (EXTERNAL redirect, guarded by THE_REQUEST)
+RewriteCond %{THE_REQUEST} \s/+tournament/html/index\.html[?\s] [NC]
+RewriteRule ^tournament/html/index\.html$ /pavouk [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+tournament/html/?[?\s] [NC]
+RewriteRule ^tournament/html/?$ /pavouk [R=301,L]
