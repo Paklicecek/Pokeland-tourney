@@ -1,38 +1,32 @@
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: "Roboto", sans-serif;
-        }
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
 
-        body {
-            height: 100vh;
-            overflow: hidden;
-            background-color: rgb(9, 6, 31);
-        }
+body {
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgb(9, 6, 31);
+}
 
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Header Styles */
-
-
-
-        /* Main Content */
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-        iframe {
-            border-radius: 12px;
-            border: 1.5px solid rgba(255, 255, 255, 0.4);
-            z-index: 10;
-        }
+body {
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+iframe {
+    border-radius: 12px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    z-index: 10;
+}
 .particles {
     position: absolute;
     top: 0;

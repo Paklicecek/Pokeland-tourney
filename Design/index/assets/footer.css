@@ -1,4 +1,3 @@
-/* FIX THE HOVER ANIMATION ON SOCIAL LINKS */
 
 footer {
     background-color: #09061F;
@@ -100,7 +99,7 @@ footer {
     object-fit: contain;
 }
 .footer-social .social-link::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;

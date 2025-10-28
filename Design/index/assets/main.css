@@ -94,7 +94,7 @@
 }
 
 .viewBrackets::before, .viewRules::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;

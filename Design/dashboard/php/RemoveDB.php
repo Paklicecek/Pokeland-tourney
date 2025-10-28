@@ -1,14 +1,14 @@
 <?php
 session_start();
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'removeDB') {
-    echo "<p class='success'>Please wait 2 seconds for response!</p>";
-    $_SESSION['Response'] = true;
-    $config = include __DIR__ . '../../../../config/db_credentials.php';
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["action"] === "removeDB") {
+    echo "<p class="success">Please wait 2 seconds for response!</p>";
+    $_SESSION["Response"] = true;
+    $config = include __DIR__ . "../../../../config/db_credentials.php";
 
-    $servername = $config['host'];
-    $dbname = $config['db'];
-    $username = $config['user'];
-    $password = $config['pass'];
+    $servername = $config["host"];
+    $dbname = $config["db"];
+    $username = $config["user"];
+    $password = $config["pass"];
     $success_message = "";
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {

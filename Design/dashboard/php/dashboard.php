@@ -1,18 +1,18 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['permission']) || $_SESSION['permission'] !== true)
+if(!isset($_SESSION["permission"]) || $_SESSION["permission"] !== true)
 {
-    header('Location: login.php');
+    header("Location: login.php");
     exit;
 }
 
-$config = include __DIR__ . '../../../../config/db_credentials.php';
+$config = include __DIR__ . "../../../../config/db_credentials.php";
 
-$servername = $config['host'];
-$dbname = $config['db'];
-$username = $config['user'];
-$password = $config['pass'];
+$servername = $config["host"];
+$dbname = $config["db"];
+$username = $config["user"];
+$password = $config["pass"];
 $names = [];
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -26,7 +26,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
                 $result = $stmt->get_result();
                 if ($result && $result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        $names[] = $row['Name']; 
+                        $names[] = $row["Name"]; 
                     }
                 }
             } 
@@ -34,19 +34,19 @@ $conn = new mysqli($servername, $username, $password, $dbname);
         } 
         $conn->close();
     }
-$_SESSION['Names'] = $names;
+$_SESSION["Names"] = $names;
 
-include 'selector.php';
+include "selector.php";
 
-if (isset($_SESSION['preset_updated'])) {
-    unset($_SESSION['preset_updated']);
-    header('Location: dashboard.php');
+if (isset($_SESSION["preset_updated"])) {
+    unset($_SESSION["preset_updated"]);
+    header("Location: dashboard.php");
     exit();
 }
 
-$selectedName = isset($_GET['winner']) ? $_GET['winner'] : '';
+$selectedName = isset($_GET["winner"]) ? $_GET["winner"] : "";
 if (!empty($selectedName)) {
-    $_SESSION['winner'] = $selectedName;
+    $_SESSION["winner"] = $selectedName;
 }
 
 
@@ -140,7 +140,7 @@ if (!empty($selectedName)) {
                                         $result = $stmt->get_result();
                                         if ($result && $result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
-                                                $counter = $row['Tcount']; 
+                                                $counter = $row["Tcount"]; 
                                             }
                                         }
                                     } 
@@ -148,9 +148,9 @@ if (!empty($selectedName)) {
                                 } 
                                 $conn->close();
                             }
-                            if(isset($_SESSION['counter'])){
-                                $counter = $counter + $_SESSION['counter'];
-                                unset($_SESSION['counter']);
+                            if(isset($_SESSION["counter"])){
+                                $counter = $counter + $_SESSION["counter"];
+                                unset($_SESSION["counter"]);
                                 $conn = new mysqli($servername, $username, $password, $dbname);
                                 if ($conn->connect_error) {
                                     $error_message = "Connection failed: " . $conn->connect_error;
@@ -158,7 +158,7 @@ if (!empty($selectedName)) {
                                 else {
                                     $stmt = $conn->prepare("UPDATE Tcounter SET Tcount = ?");
                                     if($stmt){
-                                        $stmt->bind_param('i', $counter);
+                                        $stmt->bind_param("i", $counter);
                                         $stmt->execute();
                                         $stmt->close();
                                     }
@@ -178,16 +178,16 @@ if (!empty($selectedName)) {
                         <div class="stat-label">Request response</div>
                         <p class="stat-number">
                             <?php
-                            if($_SESSION['Response'] === true){
+                            if($_SESSION["Response"] === true){
                                 echo "Executed successfully";
                             }
-                            else if($_SESSION['Response'] === false){
+                            else if($_SESSION["Response"] === false){
                                 echo "An error occurred";
                             }
                             else{
                                 echo "No requests made yet";
                             }
-                            unset($_SESSION['Response']);
+                            unset($_SESSION["Response"]);
                             ?>
                         </p>
                     </div>
@@ -206,7 +206,7 @@ if (!empty($selectedName)) {
                                     <option value="">-- Select Tournament --</option>
                                     <?php foreach ($tournament_options as $value => $display_name): ?>
                                     <option value="<?php echo htmlspecialchars($value); ?>" 
-                                            <?php echo ($current_tournament === $display_name) ? 'selected' : ''; ?>>
+                                            <?php echo ($current_tournament === $display_name) ? "selected" : ""; ?>>
                                         <?php echo htmlspecialchars($display_name); ?>
                                     </option>
                                     <?php endforeach; ?>
@@ -230,9 +230,9 @@ if (!empty($selectedName)) {
                                         <option value="">-- Select Player --</option>
                                         <?php if (!empty($names) && is_array($names)): ?>
                                             <?php foreach ($names as $name): ?>
-                                                <option value="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>"
-                                                    <?php echo ($selectedName === $name) ? 'selected' : ''; ?>>
-                                                    <?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>
+                                                <option value="<?php echo htmlspecialchars($name, ENT_QUOTES, "UTF-8"); ?>"
+                                                    <?php echo ($selectedName === $name) ? "selected" : ""; ?>>
+                                                    <?php echo htmlspecialchars($name, ENT_QUOTES, "UTF-8"); ?>
                                                 </option>
                                             <?php endforeach; ?>
                                         <?php else: ?>
@@ -333,8 +333,8 @@ if (!empty($selectedName)) {
                                 <option value="">-- Select Player --</option>
                                 <?php if (!empty($names) && is_array($names)): ?>
                                     <?php foreach ($names as $name): ?>
-                                        <option value="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>">
-                                            <?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>
+                                        <option value="<?php echo htmlspecialchars($name, ENT_QUOTES, "UTF-8"); ?>">
+                                            <?php echo htmlspecialchars($name, ENT_QUOTES, "UTF-8"); ?>
                                         </option>
                                     <?php endforeach; ?>
                                 <?php else: ?>

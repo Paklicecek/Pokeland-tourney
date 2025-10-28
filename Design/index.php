@@ -1,13 +1,13 @@
 <?php
-$config = include __DIR__ . '../../config/db_credentials.php';
+$config = include __DIR__ . "../../config/db_credentials.php";
 
-$servername = $config['host'];
-$dbname = $config['db'];
-$username = $config['user'];
-$password = $config['pass'];
+$servername = $config["host"];
+$dbname = $config["db"];
+$username = $config["user"];
+$password = $config["pass"];
 
-$success_message = '';
-$error_message = '';
+$success_message = "";
+$error_message = "";
 
 $title = "";
 $rules = "";
@@ -26,9 +26,9 @@ $rewards = "";
 
                     $row = $result->fetch_assoc();
 
-                    $title = $row['title'];
-                    $rules = $row['rules'];
-                    $rewards = $row['rewards'];
+                    $title = $row["title"];
+                    $rules = $row["rules"];
+                    $rewards = $row["rewards"];
                 }
             } 
             $stmt->close();
@@ -50,7 +50,7 @@ $rewards = "";
                 $result = $stmt->get_result();
                 if ($result && $result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        $names[] = $row['Name']; 
+                        $names[] = $row["Name"]; 
                     }
                 }
             } 
@@ -74,26 +74,21 @@ $rewards = "";
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <!-- Description -->
     <meta name="description" content="Oficiální Pokeland web na hostování turnajů." />
 
-    <!-- Canonical -->
     <link rel="canonical" href="https://turnaje.fun/" />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Pokeland - Turnaje Cobblemon" />
     <meta property="og:description" content="Oficiální Pokeland web na hostování turnajů." />
     <meta property="og:url" content="https://turnaje.fun/" />
     <meta property="og:image" content="https://turnaje.fun/index/icons/pokeland-turnaje.png" />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Pokeland - Turnaje Cobblemon" />
     <meta name="twitter:description" content="Oficiální Pokeland web na hostování turnajů." />
     <meta name="twitter:image" content="https://turnaje.fun/index/icons/pokeland-turnaje.png" />
 
-    <!-- Styles -->
     <link rel="stylesheet" href="./index/assets/main.css?v=23">
     <link rel="stylesheet" href="./index/assets/nav.css?v=6">
     <link rel="stylesheet" href="./index/assets/style.css?v=25">
@@ -141,16 +136,16 @@ $rewards = "";
                     <div class="dateContainer">
                         <p class="date"><img src="./index/icons/Date.png" alt="" class="img">
                             <?php
-                                date_default_timezone_set('Europe/Prague'); 
+                                date_default_timezone_set("Europe/Prague"); 
 
                                 $now = new DateTime();
 
-                                $days = ['Thursday', 'Sunday'];
+                                $days = ["Thursday", "Sunday"];
                                 $nextTournament = null;
 
                                 foreach ($days as $day) {
                                     $candidate = new DateTime("next $day 19:00");
-                                    if ($now->format('l') === $day && $now < new DateTime("today 19:00")) {
+                                    if ($now->format("l") === $day && $now < new DateTime("today 19:00")) {
                                         $candidate = new DateTime("today 19:00");
                                     }
                                     if ($nextTournament === null || $candidate < $nextTournament) {
@@ -159,19 +154,19 @@ $rewards = "";
                                 }
                                 
                                 $czechDays = [
-                                    'Monday' => 'Pondělí',
-                                    'Tuesday' => 'Úterý',
-                                    'Wednesday' => 'Středa',
-                                    'Thursday' => 'Čtvrtek',
-                                    'Friday' => 'Pátek',
-                                    'Saturday' => 'Sobota',
-                                    'Sunday' => 'Neděle'
+                                    "Monday" => "Pondělí",
+                                    "Tuesday" => "Úterý",
+                                    "Wednesday" => "Středa",
+                                    "Thursday" => "Čtvrtek",
+                                    "Friday" => "Pátek",
+                                    "Saturday" => "Sobota",
+                                    "Sunday" => "Neděle"
                                 ];
                                 
-                                $englishDay = $nextTournament->format('l');
+                                $englishDay = $nextTournament->format("l");
                                 $czechDay = $czechDays[$englishDay];
                                 
-                                echo $czechDay . $nextTournament->format(', d.m H:i');
+                                echo $czechDay . $nextTournament->format(", d.m H:i");
                             ?>
                         </p>
                         <p class="players">
@@ -227,12 +222,12 @@ $rewards = "";
             <p class="mainTitle" style="color: white; margin-bottom: 20px;"><strong>Pravidla & Odměny</strong></p>
             <div class="tournament-container">
                 <div class="tournament-tabs">
-                    <button class="tournament-tab active left-tab" onclick="showTournamentTab('tournament-rules')">
+                    <button class="tournament-tab active left-tab" onclick="showTournamentTab("tournament-rules")">
 
                         <img class="tournament-tab-icon special-icon" src="index/icons/Rule.png?v=1" alt="Rules Icon">
                         <p>Pravidla</p>
                     </button>
-                    <button class="tournament-tab right-tab" onclick="showTournamentTab('tournament-prizes')">
+                    <button class="tournament-tab right-tab" onclick="showTournamentTab("tournament-prizes")">
 
                         <img class="tournament-tab-icon" src="index/icons/TrophyYellow.png" alt="Prize Icon">
                         <p>Odměny</p>
@@ -322,27 +317,27 @@ $rewards = "";
 </footer>
     <script>
             function createParticles() {
-            const particlesContainer = document.getElementById('particles');
+            const particlesContainer = document.getElementById("particles");
             
             for (let i = 0; i < 30; i++) {
                 setTimeout(() => {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 10 + 's';
-                particle.style.animationDuration = (Math.random() * 4 + 10) + 's';
+                const particle = document.createElement("div");
+                particle.classList.add("particle");
+                particle.style.left = Math.random() * 100 + "%";
+                particle.style.animationDelay = Math.random() * 10 + "s";
+                particle.style.animationDuration = (Math.random() * 4 + 10) + "s";
                 particlesContainer.appendChild(particle);
                 }, 300); 
             }
         }
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        document.querySelectorAll("a[href^="#"]").forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(this.getAttribute("href"));
                 if (target) {
                     target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                        behavior: "smooth",
+                        block: "start"
                     });
                 }
             });
@@ -350,24 +345,24 @@ $rewards = "";
         createParticles();
 
     function showTournamentTab(tabName) {
-        const tabContents = document.querySelectorAll('.tournament-tab-content');
+        const tabContents = document.querySelectorAll(".tournament-tab-content");
         tabContents.forEach(content => {
-            content.classList.remove('active');
+            content.classList.remove("active");
         });
         
-        const tabs = document.querySelectorAll('.tournament-tab');
+        const tabs = document.querySelectorAll(".tournament-tab");
         tabs.forEach(tab => {
-            tab.classList.remove('active');
+            tab.classList.remove("active");
         });
         
-        document.getElementById(tabName).classList.add('active');
+        document.getElementById(tabName).classList.add("active");
         
-        const clickedButton = tabName === 'tournament-rules' 
-            ? document.querySelector('.left-tab')
-            : document.querySelector('.right-tab');
+        const clickedButton = tabName === "tournament-rules" 
+            ? document.querySelector(".left-tab")
+            : document.querySelector(".right-tab");
         
         if (clickedButton) {
-            clickedButton.classList.add('active');
+            clickedButton.classList.add("active");
         }
     }
     </script>

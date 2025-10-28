@@ -1,21 +1,21 @@
 <?php     
 session_start(); 
 
-$config = include __DIR__ . '../../../../config/db_credentials.php';
+$config = include __DIR__ . "../../../../config/db_credentials.php";
 
-$servername = $config['host'];
-$dbname = $config['db'];
-$db_user = $config['user'];
-$db_pass = $config['pass'];
+$servername = $config["host"];
+$dbname = $config["db"];
+$db_user = $config["user"];
+$db_pass = $config["pass"];
 
-$error = '';
+$error = "";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username'] ?? '');
-    $password = $_POST['password'] ?? '';
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $username = trim($_POST["username"] ?? "");
+    $password = $_POST["password"] ?? "";
     
-    if ($username === '' || $password === '') {
-        $error = 'Please enter username and password.';
+    if ($username === "" || $password === "") {
+        $error = "Please enter username and password.";
     } else {
         $conn = new mysqli($servername, $db_user, $db_pass, $dbname);
         
@@ -25,36 +25,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $conn->prepare("SELECT username, password_hash, perms FROM users WHERE username = ?");
             
             if ($stmt) {
-                $stmt->bind_param('s', $username);
+                $stmt->bind_param("s", $username);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 
                 if ($result && $row = $result->fetch_assoc()) {
-                    $dbusername = $row['username'];
-                    $password_hash = $row['password_hash'];
-                    $perms = $row['perms'];
+                    $dbusername = $row["username"];
+                    $password_hash = $row["password_hash"];
+                    $perms = $row["perms"];
 
                     if (password_verify($password, $password_hash)) {
                         if($perms === 1){
-                            $_SESSION['permission'] = true;
+                            $_SESSION["permission"] = true;
                         }
                         else{
-                            $_SESSION['permission'] = false;
+                            $_SESSION["permission"] = false;
 
                         }
-                        header('Location: /dashboard/php/dashboard.php');
+                        header("Location: /dashboard/php/dashboard.php");
                         exit;
                     }
                     else {
-                        $error = 'Invalid username or password.';
+                        $error = "Invalid username or password.";
                         $correct = false;
                     }
                 } else {
-                    $error = 'Invalid username or password.';
+                    $error = "Invalid username or password.";
                 }
                 $stmt->close();
             } else {
-                $error = 'Query prepare failed: ' . $conn->error;
+                $error = "Query prepare failed: " . $conn->error;
             }
             $conn->close();
         }
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="subtitle">Vítej zpět! Prosím přihlaš se ke svému účtu.</p>
             <?php 
                 if(!$correct){
-                    echo '<p class="error subtitle">' . $error . '</p>';
+                    echo "<p class="error subtitle">" . $error . "</p>";
                 }
             ?>
         </div>
@@ -104,30 +104,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <script>
             function createParticles() {
-            const particlesContainer = document.getElementById('particles');
+            const particlesContainer = document.getElementById("particles");
             
             for (let i = 0; i < 30; i++) {
                 setTimeout(() => {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 10 + 's';
-                particle.style.animationDuration = (Math.random() * 4 + 10) + 's';
+                const particle = document.createElement("div");
+                particle.classList.add("particle");
+                particle.style.left = Math.random() * 100 + "%";
+                particle.style.animationDelay = Math.random() * 10 + "s";
+                particle.style.animationDuration = (Math.random() * 4 + 10) + "s";
                 particlesContainer.appendChild(particle);
                 }, 300); 
             }
         }
 
 
-        // Button click animation - FIXED VERSION
         function addButtonAnimation() {
-            const button = document.querySelector('.login-btn');
+            const button = document.querySelector(".login-btn");
             
-            button.addEventListener('click', function(e) {
-                // Don't prevent default - let the form submit naturally
+            button.addEventListener("click", function(e) {
                 
-                // Create ripple effect
-                const ripple = document.createElement('span');
+                const ripple = document.createElement("span");
                 const rect = this.getBoundingClientRect();
                 const size = Math.max(rect.width, rect.height);
                 const x = e.clientX - rect.left - size / 2;
@@ -153,8 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             });
         }
 
-        // Add ripple animation keyframes
-        const style = document.createElement('style');
+        const style = document.createElement("style");
         style.textContent = `
             @keyframes ripple {
                 to {
@@ -165,8 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         `;
         document.head.appendChild(style);
 
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener("DOMContentLoaded", function() {
             createParticles();
             addButtonAnimation();
         });

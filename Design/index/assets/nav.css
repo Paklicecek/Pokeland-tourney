@@ -32,16 +32,16 @@
     color: white;
 }
 .rules {
-    background-image: url('../icons/Rule.png');
+    background-image: url("../icons/Rule.png");
 }
 .brackets{
-    background-image: url('../icons/Brackets.png');
+    background-image: url("../icons/Brackets.png");
 }
 .tournament{
-    background-image: url('../icons/Trophy.png');
+    background-image: url("../icons/Trophy.png");
 }
 .breakdown{
-    background-image: url('../icons/Calendar.png?v=1');
+    background-image: url("../icons/Calendar.png?v=1");
 }
 .rules, .brackets, .tournament, .breakdown {
     position: relative;
@@ -56,7 +56,7 @@
     background-size: 1em;
 }
 .rules::before, .brackets::before, .tournament::before, .breakdown::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
@@ -71,7 +71,7 @@
     cursor: pointer;
 }
 .rules::after, .brackets::after, .tournament::after, .breakdown:after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -108,7 +108,7 @@
     justify-content: center;
 }
 .button::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
