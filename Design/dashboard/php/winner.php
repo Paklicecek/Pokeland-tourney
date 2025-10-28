@@ -6,7 +6,7 @@ if (!isset($_SESSION["winner"]) || empty($_SESSION["winner"])) {
 }
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
-echo "<p class="success">Please wait 4 seconds for response!</p>";
+echo "<p class'success'>Please wait 4 seconds for response!</p>";
 
 $API = include __DIR__ . "../../../../config/api.php";
 $apiKey = $API["apiKey"];

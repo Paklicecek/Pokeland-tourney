@@ -222,38 +222,10 @@ main {
     flex: 1;
 }
 
-.select-btn {
-    width: 100%;
-    background: var(--background-dark);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 12px 16px;
-    color: var(--text-light);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.3s ease;
-    user-select: none;
-}
 
-.select-btn:hover {
-    border-color: var(--primary-color);
-}
 
-.select-btn.active {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
-}
 
-.dropdown-arrow {
-    transition: transform 0.3s ease;
-    font-size: 12px;
-}
 
-.select-btn.active .dropdown-arrow {
-    transform: rotate(180deg);
-}
 
 .preset-confirm-btn {
     background: var(--primary-color);

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["action"] === "start") {
-    echo "<p class="success">Please wait 2 seconds for response!</p>";
+    echo "<p class='success'>Please wait 2 seconds for response!</p>";
     $_SESSION["Response"] = true;
     $_SESSION["counter"] = 1;
 
@@ -39,7 +39,7 @@ $password = $config["pass"];
         $error_message = "Connection failed: " . $conn->connect_error;
     }
     else{
-        $res = $conn->query("SELECT "counter"");
+        $res = $conn->query("SELECT 'counter'");
         if ($res) {
             while ($row = $res->fetch_assoc()) {
                 $titles[] = $row["title"];

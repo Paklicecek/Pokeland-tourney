@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <p class="subtitle">Vítej zpět! Prosím přihlaš se ke svému účtu.</p>
             <?php 
                 if(!$correct){
-                    echo "<p class="error subtitle">" . $error . "</p>";
+                    echo "<p class='error subtitle'>" . $error . "</p>";
                 }
             ?>
         </div>
