@@ -6,6 +6,8 @@ if (!isset($_SESSION['winner']) || empty($_SESSION['winner'])) {
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
+echo "<p class='success'>Please wait 4 seconds for response!</p>";
+
 $API = include __DIR__ . '../../../../config/api.php';
 $apiKey = $API['apiKey'];
 $tournament = 'myTest92521';   
@@ -98,7 +100,6 @@ $update = callChallonge(
     ]
 );
 
-echo "Reported winner: {$playerName} (participant id {$pid}) for match {$selected['id']}.\n";
 $_SESSION['Response'] = true;
 } else {
     $_SESSION['Response'] = false;
