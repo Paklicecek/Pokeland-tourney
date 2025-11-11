@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["action"] === "start") {
-    echo "<p class='success'>Please wait 2 seconds for response!</p>";
+    echo "<p class='success'>Prosím vyčkej 2 sekundy na zpracování!</p>";
     $_SESSION["Response"] = true;
     $_SESSION["counter"] = 1;
 
