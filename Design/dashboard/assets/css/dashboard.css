@@ -149,7 +149,7 @@ main {
     display: grid;
     grid-template-columns: 0.75fr 0.80fr 2fr;
     gap: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 18px;
 }
 
 .stat-card {
@@ -180,7 +180,7 @@ main {
 }
 
 .preset-section {
-    margin-bottom: 30px;
+    margin-bottom: 18px;
 }
 
 .preset-grid {

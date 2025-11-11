@@ -57,13 +57,13 @@ if (!empty($selectedName)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/dashboard.css?v=39">
-    <link rel="stylesheet" href="../assets/css/Controls.css?v=67">
-    <link rel="stylesheet" href="../assets/css/Creation.css?v=32">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?v=40">
+    <link rel="stylesheet" href="../assets/css/Controls.css?v=68">
+    <link rel="stylesheet" href="../assets/css/Creation.css?v=33">
     <link rel="icon" type="image/png" href="../../index/icons/Logo.png?v=3">
 
     <script src="../js/script.js?v=8" defer></script>
-    <script src="../js/phpfunctions.js?v=29" defer></script>
+    <script src="../js/phpfunctions.js?v=34" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -179,7 +179,7 @@ if (!empty($selectedName)) {
                         <p class="stat-number">
                             <?php
                             if($_SESSION["Response"] === true){
-                                echo "Příkaz se povedld";
+                                echo "Požadavek se povedld";
                             }
                             else if($_SESSION["Response"] === false){
                                 echo "Někde nastala chyba";

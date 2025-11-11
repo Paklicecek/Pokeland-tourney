@@ -30,14 +30,11 @@ document.querySelector(".submit-player").addEventListener("click", function(e) {
     const winner = formData.get("winner");
     
     if (!winner) {
-        alert("Please select a player first");
+        alert("Prosím vyber hráče");
         return;
     }
     
-    fetch(`dashboard.php?winner=${encodeURIComponent(winner)}`)
-        .then(() => {
-            return fetchAndUpdate("winner.php", { action: "report_winner" });
-        });
+    fetchAndUpdate2("winner.php", { winner: winner });
 });
 
 async function fetchAndUpdate(url, data) {
@@ -47,13 +44,26 @@ async function fetchAndUpdate(url, data) {
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams(data)
         });
-        const result = await response.text();
         
-        const resultElement = document.getElementById("result");
-        if (resultElement) {
-            resultElement.innerHTML = result;
+        const contentType = response.headers.get("content-type");
+        let result;
+        
+        if (contentType && contentType.includes("application/json")) {
+            result = await response.json();
+            const resultElement = document.getElementById("result");
+            if (resultElement) {
+                if (result.success) {
+                    resultElement.innerHTML = `<p class='success'>${result.message}</p>`;
+                } else {
+                    resultElement.innerHTML = `<p class='error'>${result.message}</p>`;
+                }
+            }
         } else {
-            console.log("Result:", result); 
+            result = await response.text();
+            const resultElement = document.getElementById("result");
+            if (resultElement) {
+                resultElement.innerHTML = result;
+            }
         }
         
         setTimeout(() => {
@@ -63,8 +73,42 @@ async function fetchAndUpdate(url, data) {
         console.error("Error:", error);
         const resultElement = document.getElementById("result");
         if (resultElement) {
-            resultElement.innerHTML = "An error occurred.";
+            resultElement.innerHTML = "<p class='error'>Nastala chyba při zpracování požadavku</p>";
         }
+    }
+}
+async function fetchAndUpdate2(url, data) {
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(data)
+        });
+        
+        const contentType = response.headers.get("content-type");
+        let result;
+        
+        if (contentType && contentType.includes("application/json")) {
+            result = await response.json();
+            const resultElement = document.getElementById("result");
+            if (resultElement) {
+                if (result.success) {
+                    resultElement.innerHTML = `<p class='success'>${result.message}</p>`;
+                } else {
+                    resultElement.innerHTML = `<p class='error'>${result.message}</p>`;
+                }
+            }
+        } else {
+            result = await response.text();
+            const resultElement = document.getElementById("result");
+            if (resultElement) {
+                resultElement.innerHTML = result;
+            }
+        }
+        
+
+    } catch (error) {
+        console.error("Error:", error);
     }
 }
 async function removeDBHandler() {
@@ -98,7 +142,7 @@ async function removeDBHandler() {
         console.error("RemoveDB Error:", error);
         const resultElement = document.getElementById("result");
         if (resultElement) {
-            resultElement.innerHTML = "<p class'error'>An error occurred: " + error.message + "</p>";
+            resultElement.innerHTML = "<p class='error'>An error occurred: " + error.message + "</p>";
         }
     }
 }

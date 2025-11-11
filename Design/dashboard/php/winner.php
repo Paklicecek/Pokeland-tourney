@@ -1,22 +1,31 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+header('Content-Type: application/json');
+
+try {
+    if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+        throw new Exception("Invalid request method");
+    }
     
     if (!isset($_POST["winner"]) || empty($_POST["winner"])) {
-        $_SESSION["Response"] = false;
-        header("Location: dashboard.php");
-        exit;
+        throw new Exception("No winner selected");
     }
 
     $_SESSION["winner"] = $_POST["winner"];
+    $playerName = $_POST["winner"];
     
-    echo "<p class='success'>Prosím vyčkej 2 sekundy na zpracování!</p>";
-
     $API = include __DIR__ . "../../../../config/api.php";
+    if (!$API || !isset($API["apiKey"])) {
+        throw new Exception("API configuration not found");
+    }
+    
     $apiKey = $API["apiKey"];
-    $tournament = "myTest92521";   
-    $playerName = $_SESSION["winner"];
+    $tournament = "myTest92521";
 
     function callChallonge($method, $url, $fields = []) {
         $method = strtoupper($method);
@@ -58,63 +67,76 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         return (json_last_error() === JSON_ERROR_NONE) ? $json : $out;
     }
 
-    try {
-        $participants = callChallonge(
-            "GET",
-            "https://api.challonge.com/v1/tournaments/$tournament/participants.json",
-            ["api_key" => $apiKey]
-        );
+    $participants = callChallonge(
+        "GET",
+        "https://api.challonge.com/v1/tournaments/$tournament/participants.json",
+        ["api_key" => $apiKey]
+    );
 
-        $pid = null;
-        foreach ($participants as $p) {
-            if ($p["participant"]["name"] === $playerName) {
-                $pid = $p["participant"]["id"];
-                break;
-            }
+    $pid = null;
+    foreach ($participants as $p) {
+        if (isset($p["participant"]["name"]) && $p["participant"]["name"] === $playerName) {
+            $pid = $p["participant"]["id"];
+            break;
         }
-        if (!$pid) { throw new RuntimeException("Could not find participant named "{$playerName}""); }
-
-        $matches = callChallonge(
-            "GET",
-            "https://api.challonge.com/v1/tournaments/$tournament/matches.json",
-            ["api_key" => $apiKey, "state" => "all", "participant_id" => $pid]
-        );
-
-        $selected = null;
-        foreach ($matches as $m) {
-            $mm = $m["match"];
-            if (isset($mm["state"]) && $mm["state"] === "complete") continue;
-            if ($mm["player1_id"] == $pid || $mm["player2_id"] == $pid) {
-                $selected = $mm;
-                break;
-            }
-        }
-        if (!$selected) { throw new RuntimeException("No non-completed match found for participant ID {$pid}"); }
-
-        if ($selected["player1_id"] == $pid) {
-            $scoresCsv = "1-0"; 
-        } else {
-            $scoresCsv = "0-1"; 
-        }
-        $update = callChallonge(
-            "PUT",
-            "https://api.challonge.com/v1/tournaments/$tournament/matches/{$selected["id"]}.json",
-            [
-                "api_key"           => $apiKey,
-                "match[winner_id]"  => $pid,
-                "match[scores_csv]" => $scoresCsv,
-            ]
-        );
-
-        $_SESSION["Response"] = true;
-    } catch (Exception $e) {
-        $_SESSION["Response"] = false;
     }
     
-    header("Location: dashboard.php");
-    exit;
-} else {
-    header("Location: dashboard.php");
-    exit;
+    if (!$pid) {
+        throw new RuntimeException("Could not find participant named \"{$playerName}\"");
+    }
+
+    $matches = callChallonge(
+        "GET",
+        "https://api.challonge.com/v1/tournaments/$tournament/matches.json",
+        ["api_key" => $apiKey, "state" => "all", "participant_id" => $pid]
+    );
+
+    $selected = null;
+    foreach ($matches as $m) {
+        $mm = $m["match"];
+        if (isset($mm["state"]) && $mm["state"] === "complete") continue;
+        if ($mm["player1_id"] == $pid || $mm["player2_id"] == $pid) {
+            $selected = $mm;
+            break;
+        }
+    }
+    
+    if (!$selected) {
+        throw new RuntimeException("No open match found for {$playerName}. They may have already played their match.");
+    }
+
+    if ($selected["player1_id"] == $pid) {
+        $scoresCsv = "1-0"; 
+    } else {
+        $scoresCsv = "0-1"; 
+    }
+    
+    $update = callChallonge(
+        "PUT",
+        "https://api.challonge.com/v1/tournaments/$tournament/matches/{$selected["id"]}.json",
+        [
+            "api_key"           => $apiKey,
+            "match[winner_id]"  => $pid,
+            "match[scores_csv]" => $scoresCsv,
+        ]
+    );
+
+    $_SESSION["Response"] = true;
+    
+    echo json_encode([
+        "success" => true,
+        "message" => "Vítěz {$playerName} byl úspěšně nastaven!"
+    ]);
+    
+} catch (Exception $e) {
+    $_SESSION["Response"] = false;
+    error_log("Winner.php error: " . $e->getMessage());
+    
+    if($_SESSION["Response"] == false){
+    echo json_encode([
+        "success" => false,
+        "message" => "Chyba: " . $e->getMessage()
+    ]);
+    }
 }
 ?>
