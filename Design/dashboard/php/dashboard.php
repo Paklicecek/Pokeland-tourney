@@ -219,19 +219,17 @@ if (!empty($selectedName)) {
                         </div>
                     </div>
                 </form>
-                <!-- Player Selector -->
-                <form method="GET" action="dashboard.php">
+                <form method="POST" action="winner.php">
                     <div class="preset-card">
                         <h2 class="card-title">Výběr vítěze</h2>
                         <div class="preset-controls">
                             <div class="custom-select">
                                 <div class="form-group">
-                                    <select name="winner" class="tournament-selector">
+                                    <select name="winner" class="tournament-selector" required>
                                         <option value="">-- Vyber vítěze --</option>
                                         <?php if (!empty($names) && is_array($names)): ?>
                                             <?php foreach ($names as $name): ?>
-                                                <option value="<?php echo htmlspecialchars($name, ENT_QUOTES, "UTF-8"); ?>"
-                                                    <?php echo ($selectedName === $name) ? "selected" : ""; ?>>
+                                                <option value="<?php echo htmlspecialchars($name, ENT_QUOTES, "UTF-8"); ?>">
                                                     <?php echo htmlspecialchars($name, ENT_QUOTES, "UTF-8"); ?>
                                                 </option>
                                             <?php endforeach; ?>
@@ -315,7 +313,7 @@ if (!empty($selectedName)) {
 
                         <div class="input-section2">
                             <select name="remove_tournament" class="tournament-selector2" >
-                                <option value="">-- Select Tournament --</option>
+                                <option value="">-- Vyber předvolbu --</option>
                                 <?php foreach ($tournament_options as $value => $display_name): ?>
                                     <option value="<?php echo htmlspecialchars($value); ?>">
                                         <?php echo htmlspecialchars($display_name); ?>
