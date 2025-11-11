@@ -1,6 +1,6 @@
 .tournament-container {
-    width: 40%;
-    margin: 0 auto;
+    width: 45%;
+    margin: 0;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     background-color: rgba(30, 30, 50, 0.209);
@@ -8,6 +8,7 @@
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
+
 }
 
 .tournament-tabs {

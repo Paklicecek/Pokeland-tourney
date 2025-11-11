@@ -75,6 +75,7 @@ $rewards = "";
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <meta name="description" content="Oficiální Pokeland web na hostování turnajů." />
+    <meta name="author" content="Paklic">
 
     <link rel="canonical" href="https://turnaje.fun/" />
 
@@ -89,10 +90,10 @@ $rewards = "";
     <meta name="twitter:description" content="Oficiální Pokeland web na hostování turnajů." />
     <meta name="twitter:image" content="https://turnaje.fun/index/icons/pokeland-turnaje.png" />
 
-    <link rel="stylesheet" href="./index/assets/main.css?v=23">
+    <link rel="stylesheet" href="./index/assets/main.css?v=24">
     <link rel="stylesheet" href="./index/assets/nav.css?v=6">
     <link rel="stylesheet" href="./index/assets/style.css?v=25">
-    <link rel="stylesheet" href="./index/assets/tournament.css?v=12">
+    <link rel="stylesheet" href="./index/assets/tournament.css?v=15">
     <link rel="stylesheet" href="./index/assets/footer.css?v=68">
     <link rel="stylesheet" href="./index/assets/tooltip.css?v=24">
     <script src="./index/js/tooltip.js?v=2" defer></script>
@@ -222,12 +223,12 @@ $rewards = "";
             <p class="mainTitle" style="color: white; margin-bottom: 20px;"><strong>Pravidla & Odměny</strong></p>
             <div class="tournament-container">
                 <div class="tournament-tabs">
-                    <button class="tournament-tab active left-tab" onclick="showTournamentTab("tournament-rules")">
+                    <button class="tournament-tab active left-tab" onclick="showTournamentTab('tournament-rules')">
 
                         <img class="tournament-tab-icon special-icon" src="index/icons/Rule.png?v=1" alt="Rules Icon">
                         <p>Pravidla</p>
                     </button>
-                    <button class="tournament-tab right-tab" onclick="showTournamentTab("tournament-prizes")">
+                    <button class="tournament-tab right-tab" onclick="showTournamentTab('tournament-prizes')">
 
                         <img class="tournament-tab-icon" src="index/icons/TrophyYellow.png" alt="Prize Icon">
                         <p>Odměny</p>
@@ -330,7 +331,7 @@ $rewards = "";
                 }, 300); 
             }
         }
-        document.querySelectorAll("a[href^="#"]").forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute("href"));

@@ -18,6 +18,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
 }
 .start {
     background: #169546;
@@ -41,9 +42,9 @@
 .start, .end, .matches, .reset, .finish, .soon{
     border: none;
     height: 7.4rem;
-    width: 13%;
+    width: 15%;
     border-radius: 12px;
-    padding: 24px;
+    padding: 18px 0 0;
     color: var(--text-light);
     font-size: 18px;
     font-weight: 600;
